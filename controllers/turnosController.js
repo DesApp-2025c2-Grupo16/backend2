@@ -1,19 +1,19 @@
-import { afiliados } from "../data/data.js";
+const { afiliados } = require("../data/data.js");
 
-export const getTurnosById = (req, res) => {
+const getTurnosById = (req, res) => {
   const af = afiliados.find(a => a.id === parseInt(req.params.id));
   if (!af) return res.status(404).json({ error: "Afiliado no encontrado" });
   res.json(af.turnos);
 };
 
-export const createTurno = (req, res) => {
+const createTurno = (req, res) => {
   const af = afiliados.find(a => a.id === parseInt(req.params.id));
   if (!af) return res.status(404).json({ error: "Afiliado no encontrado" });
   af.turnos.push(req.body);
   res.status(201).json(req.body);
 };
 
-export const updateTurno = (req, res) => {
+const updateTurno = (req, res) => {
   const af = afiliados.find(a => a.id === parseInt(req.params.id));
   if (!af) return res.status(404).json({ error: "Afiliado no encontrado" });
   const index = req.body.index;
@@ -23,9 +23,16 @@ export const updateTurno = (req, res) => {
   res.json(af.turnos[index]);
 };
 
-export const deleteTurnos = (req, res) => {
+const deleteTurnos = (req, res) => {
   const af = afiliados.find(a => a.id === parseInt(req.params.id));
   if (!af) return res.status(404).json({ error: "Afiliado no encontrado" });
   af.turnos = [];
   res.json({ message: "Turnos eliminados correctamente" });
 };
+
+module.exports = {
+  getTurnosById,
+  createTurno,
+  updateTurno,
+  deleteTurnos
+}

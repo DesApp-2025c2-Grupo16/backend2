@@ -1,16 +1,16 @@
-import express from "express";
-import {
+const {Router} = require('express');
+const {
   getHistorialById,
   createHistorial,
   updateHistorial,
   deleteHistorial
-} from "../controllers/historialController.js";
+} = require("../controllers/historialController.js");
 
-const router = express.Router();
+const router = Router();
 
 router.get("/:id", getHistorialById);
 router.post("/:id", createHistorial);
 router.put("/:id", updateHistorial);
 router.delete("/:id", deleteHistorial);
 
-export default router;
+module.exports = router;

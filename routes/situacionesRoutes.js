@@ -1,10 +1,10 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   getSituacionById,
   createSituacion,
   updateSituacion,
   deleteSituacion
-} from "../controllers/situacionesController.js";
+} = require("../controllers/situacionesController.js");
 
 const router = express.Router();
 
@@ -13,4 +13,4 @@ router.post("/:id", createSituacion);
 router.put("/:id", updateSituacion);
 router.delete("/:id", deleteSituacion);
 
-export default router;
+module.exports = router;

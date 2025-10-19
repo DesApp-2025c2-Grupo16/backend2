@@ -1,6 +1,6 @@
-import { afiliados } from "../data/data.js";
+const { afiliados } = require("../data/data.js");
 
-export const getSituacionById = (req, res) => {
+const getSituacionById = (req, res) => {
   const af = afiliados.find(a => a.id === parseInt(req.params.id));
   if (!af) return res.status(404).json({ error: "Afiliado no encontrado" });
   res.json({
@@ -12,7 +12,7 @@ export const getSituacionById = (req, res) => {
   });
 };
 
-export const createSituacion = (req, res) => {
+const createSituacion = (req, res) => {
   const af = afiliados.find(a => a.id === parseInt(req.params.id));
   if (!af) return res.status(404).json({ error: "Afiliado no encontrado" });
   af.situacionTerapeutica = req.body.situacionTerapeutica;
@@ -21,14 +21,14 @@ export const createSituacion = (req, res) => {
   res.status(201).json(af);
 };
 
-export const updateSituacion = (req, res) => {
+const updateSituacion = (req, res) => {
   const af = afiliados.find(a => a.id === parseInt(req.params.id));
   if (!af) return res.status(404).json({ error: "Afiliado no encontrado" });
   Object.assign(af, req.body);
   res.json(af);
 };
 
-export const deleteSituacion = (req, res) => {
+const deleteSituacion = (req, res) => {
   const af = afiliados.find(a => a.id === parseInt(req.params.id));
   if (!af) return res.status(404).json({ error: "Afiliado no encontrado" });
   af.situacionTerapeutica = null;
@@ -36,3 +36,10 @@ export const deleteSituacion = (req, res) => {
   af.fechaFinSituacion = null;
   res.json({ message: "Situación eliminada correctamente" });
 };
+
+module.exports = {
+  getSituacionById,
+  createSituacion,
+  updateSituacion,
+  deleteSituacion
+}

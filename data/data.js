@@ -1,4 +1,4 @@
-export const afiliados = [
+module.exports = afiliados = [
   {
     nroAfiliado: "A1001",
     nombre: "Juan Pérez",

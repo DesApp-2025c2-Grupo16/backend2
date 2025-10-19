@@ -1,12 +1,21 @@
-import express from "express";
-import cors from "cors";
+const express = require('express')
+const cors = require('cors')
+//import express from "express";
+//import cors from "cors";
+
+
 
 // Rutas
-import afiliadosRoutes from "./routes/afiliadosRoutes.js";
-import situacionesRoutes from "./routes/situacionesRoutes.js";
-import turnosRoutes from "./routes/turnosRoutes.js";
-import grupoFamiliarRoutes from "./routes/grupoFamiliarRoutes.js";
-import historialRoutes from "./routes/historialRoutes.js";
+
+const afiliadosRoutes= require( "./routes/afiliadosRoutes.js")
+const situacionesRoutes= require( "./routes/situacionesRoutes.js")
+const turnosRoutes= require( "./routes/turnosRoutes.js")
+const historialRoutes= require( "./routes/historialRoutes.js")
+//import db from "./database/models/index.js"
+
+const db = require('./database/models') 
+
+db.sequelize.sync({force: true})
 
 const app = express();
 const PORT = 3001;
@@ -18,7 +27,6 @@ app.use(express.json());
 app.use("/afiliados", afiliadosRoutes);
 app.use("/situaciones", situacionesRoutes);
 app.use("/turnos", turnosRoutes);
-app.use("/afiliados", grupoFamiliarRoutes);
 app.use("/historial", historialRoutes);
 
 app.listen(PORT, () => {
