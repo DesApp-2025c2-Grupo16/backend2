@@ -15,7 +15,7 @@ const historialRoutes= require( "./routes/notasRoutes.js")
 
 const db = require('./database/models') 
 
-db.sequelize.sync({force: true})
+db.sequelize.sync({force: false})
 
 const app = express();
 const PORT = 3001;

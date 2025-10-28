@@ -1,6 +1,7 @@
 const express = require("express");
 const {
-  getSituacionById,
+  getSituacionesByAfiliado,
+  getSituacionesByGrupoFamiliar,
   createSituacion,
   updateSituacion,
   deleteSituacion
@@ -8,8 +9,9 @@ const {
 
 const router = express.Router();
 
-router.get("/:id", getSituacionById);
-router.post("/:id", createSituacion);
+router.get("/:afiliadoId", getSituacionesByAfiliado);
+router.get("/grupoFamiliar/:nroGrupoFamiliar", getSituacionesByGrupoFamiliar);
+router.post("/:afiliadoId", createSituacion);
 router.put("/:id", updateSituacion);
 router.delete("/:id", deleteSituacion);
 

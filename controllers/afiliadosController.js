@@ -29,14 +29,11 @@ const createAfiliado = async (req, res) => {
 const updateAfiliado = async (req, res) => {
   try {
     const id = req.params.id 
-    const {numeroGrupoFamiliar, numeroIntegrate, nombre, apellido, parentesco} = req.body
-
     const afiliado = await Afiliado.findByPk(id)
-
     if(!afiliado){
       return res.status(404).json({message: "No se encontro el afiliado"})
     }
-
+    const {numeroGrupoFamiliar, numeroIntegrate, nombre, apellido, parentesco} = req.body
     if(numeroGrupoFamiliar){
       afiliado.numeroGrupoFamiliar=numeroGrupoFamiliar
     }
@@ -50,12 +47,9 @@ const updateAfiliado = async (req, res) => {
       afiliado.apellido=apellido
     }
     if(parentesco){
-
       afiliado.parentesco=parentesco
     }
-
-    afiliado.save()
-
+    await afiliado.save()
     res.status(200).json(afiliado)
   } catch (error) {
     return res.status(500).json({message: "Error interno del servidor", error: error.message})
