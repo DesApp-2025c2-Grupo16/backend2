@@ -10,7 +10,7 @@ const cors = require('cors')
 const afiliadosRoutes= require( "./routes/afiliadosRoutes.js")
 const situacionesRoutes= require( "./routes/situacionesRoutes.js")
 const turnosRoutes= require( "./routes/turnosRoutes.js")
-const historialRoutes= require( "./routes/historialRoutes.js")
+const historialRoutes= require( "./routes/notasRoutes.js")
 //import db from "./database/models/index.js"
 
 const db = require('./database/models') 
@@ -27,7 +27,7 @@ app.use(express.json());
 app.use("/afiliados", afiliadosRoutes);
 app.use("/situaciones", situacionesRoutes);
 app.use("/turnos", turnosRoutes);
-app.use("/historial", historialRoutes);
+app.use("/notas", historialRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

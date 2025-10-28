@@ -9,17 +9,19 @@ const getAfiliadoById = async (req, res) => {
     }
     return res.status(200).json(afiliado)
   } catch (error) {
-    return res.status(500).json({message: "Error interno del servidor" })
+    return res.status(500).json({message: "Error interno del servidor", error: error.message})
   }
 };
 
 const createAfiliado = async (req, res) => {
   try {
     const afiliado = await Afiliado.create({...req.body})
+    if(afiliado === Sequelize.ValidationError){
+          return res.status(400).json(afiliado)
+        }
     return res.status(201).json({afiliado})
   } catch (error) {
-    //return res.status(500).json({message: "Error interno del servidor"})
-    return res.status(500).json({message: error.message})
+    return res.status(500).json({message: "Error interno del servidor", error: error.message})
   }
 };
 
@@ -56,8 +58,7 @@ const updateAfiliado = async (req, res) => {
 
     res.status(200).json(afiliado)
   } catch (error) {
-    //return res.status(500).json({message: "Error interno del servidor"})
-    
+    return res.status(500).json({message: "Error interno del servidor", error: error.message})
   }
 };
 
@@ -71,7 +72,7 @@ const deleteAfiliado = async (req, res) => {
     await afiliado.destroy()
     return res.status(200).json({message: "Afiliado borrado exitosamente"})
   } catch (error) {
-    return res.status(500).json({message: "Error interno del servidor"})
+    return res.status(500).json({message: "Error interno del servidor", error: error.message})
   }
 };
 
@@ -88,7 +89,7 @@ const deleteAfiliado = async (req, res) => {
     }
     return res.status(200).json(afiliados)
   } catch (error) {
-    return res.status(500).json({message: error.message})
+    return res.status(500).json({message: "Error interno del servidor", error: error.message})
   }
 };
 

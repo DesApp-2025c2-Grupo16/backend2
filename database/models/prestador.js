@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       Prestador.hasMany(models.Reintegro)
       Prestador.hasMany(models.Autorizacion)
       Prestador.hasMany(models.Turno)
+      Prestador.hasMany(models.Nota)
     }
   }
   Prestador.init({

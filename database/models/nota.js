@@ -13,10 +13,14 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Nota.belongsTo(models.Afiliado)
       Nota.belongsTo(models.Turno)
+      Nota.belongsTo(models.Prestador)
     }
   }
   Nota.init({
-    descripcion: DataTypes.STRING
+    descripcion: DataTypes.STRING,
+    motivo: DataTypes.STRING,
+    doctor: DataTypes.STRING,
+    fecha: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Nota',
