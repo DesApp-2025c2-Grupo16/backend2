@@ -1,16 +1,14 @@
-import express from "express";
-import {
-  getTurnosById,
-  createTurno,
-  updateTurno,
-  deleteTurnos
-} from "../controllers/turnosController.js";
+const express = require("express");
+const {
+  getTurnosByPrestador,
+  getTurnosByPrestadorAndEspecialidad,
+  createSituacion
+} = require("../controllers/turnosController.js");
 
 const router = express.Router();
 
-router.get("/:id", getTurnosById);
-router.post("/:id", createTurno);
-router.put("/:id", updateTurno);
-router.delete("/:id", deleteTurnos);
+router.get("/:prestadorId", getTurnosByPrestador);
+router.get("/:prestadorId/:especialidad", getTurnosByPrestadorAndEspecialidad);
+router.post("/", createSituacion)
 
-export default router;
+module.exports = router;

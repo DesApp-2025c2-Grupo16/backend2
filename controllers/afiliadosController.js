@@ -1,74 +1,96 @@
-import { afiliados } from "../data/data.js";
+const { Afiliado, Sequelize } = require('../database/models')
 
-export const getAfiliadoById = (req, res) => {
-  const { id } = req.params; 
-
-  // Buscamos primero en titulares
-  let af = afiliados.find(a => a.nroAfiliado === id);
-
-  // Si no está en titulares, buscamos en grupo familiar
-  if (!af) {
-    for (let titular of afiliados) {
-      af = (titular.grupoFamiliar || []).find(f => f.nroAfiliado === id);
-      if (af) break;
+const getAfiliadoById = async (req, res) => {
+  try {
+    const id = req.params.id; 
+    const afiliado = await Afiliado.findByPk(id)
+    if(!afiliado){
+      return res.status(404).json({message: "No se encontro el afiliado"})
     }
+    return res.status(200).json(afiliado)
+  } catch (error) {
+    return res.status(500).json({message: "Error interno del servidor", error: error.message})
   }
-
-  if (!af) return res.status(404).json({ error: "Afiliado no encontrado" });
-
-  // Aseguramos que existan campos necesarios
-  if (!af.situacionTerapeutica) af.situacionTerapeutica = { descripcion: "—" };
-  if (!af.historiaClinica) af.historiaClinica = [];
-
-  res.json(af);
 };
 
-export const createAfiliado = (req, res) => {
-  const nuevo = { ...req.body };
-  afiliados.push(nuevo);
-  res.status(201).json(nuevo);
-};
-
-export const updateAfiliado = (req, res) => {
-  const { id } = req.params;
-  const index = afiliados.findIndex(a => a.nroAfiliado === id);
-  if (index === -1) return res.status(404).json({ error: "Afiliado no encontrado" });
-  afiliados[index] = { ...afiliados[index], ...req.body };
-  res.json(afiliados[index]);
-};
-
-export const deleteAfiliado = (req, res) => {
-  const { id } = req.params;
-  const index = afiliados.findIndex(a => a.nroAfiliado === id);
-  if (index === -1) return res.status(404).json({ error: "Afiliado no encontrado" });
-  const eliminado = afiliados.splice(index, 1);
-  res.json(eliminado[0]);
-};
-
-export const getGrupoFamiliar = (req, res) => {
-  const { id } = req.params;
-  const afiliado = afiliados.find(a => a.nroAfiliado === id);
-
-  if (!afiliado) {
-    return res.status(404).json({ error: "Afiliado no encontrado" });
+const createAfiliado = async (req, res) => {
+  try {
+    const afiliado = await Afiliado.create({...req.body})
+    if(afiliado === Sequelize.ValidationError){
+          return res.status(400).json(afiliado)
+        }
+    return res.status(201).json({afiliado})
+  } catch (error) {
+    return res.status(500).json({message: "Error interno del servidor", error: error.message})
   }
-
-  // Armamos el grupo familiar con el titular incluido
-  const titular = {
-    nroAfiliado: afiliado.nroAfiliado,
-    clasificacion: "Titular",
-    nombre: afiliado.nombre,
-    situacion: afiliado.situacionTerapeutica?.descripcion || "—",
-    ultimoTurno: afiliado.turnos?.[afiliado.turnos.length - 1]?.fecha || "—",
-  };
-
-  const grupo = (afiliado.grupoFamiliar || []).map((familiar) => ({
-    nroAfiliado: familiar.nroAfiliado,
-    clasificacion: familiar.clasificacion,
-    nombre: familiar.nombre,
-    situacion: familiar.situacionTerapeutica?.descripcion || "—",
-    ultimoTurno: familiar.turnos?.[familiar.turnos.length - 1]?.fecha || "—",
-  }));
-
-  res.json([titular, ...grupo]);
 };
+
+//Horrible
+const updateAfiliado = async (req, res) => {
+  try {
+    const id = req.params.id 
+    const afiliado = await Afiliado.findByPk(id)
+    if(!afiliado){
+      return res.status(404).json({message: "No se encontro el afiliado"})
+    }
+    const {numeroGrupoFamiliar, numeroIntegrate, nombre, apellido, parentesco} = req.body
+    if(numeroGrupoFamiliar){
+      afiliado.numeroGrupoFamiliar=numeroGrupoFamiliar
+    }
+    if(numeroIntegrate){
+      afiliado.numeroIntegrate=numeroIntegrate
+    }
+    if(nombre){
+      afiliado.nombre=nombre
+    }
+    if(apellido){
+      afiliado.apellido=apellido
+    }
+    if(parentesco){
+      afiliado.parentesco=parentesco
+    }
+    await afiliado.save()
+    res.status(200).json(afiliado)
+  } catch (error) {
+    return res.status(500).json({message: "Error interno del servidor", error: error.message})
+  }
+};
+
+const deleteAfiliado = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const afiliado = await Afiliado.findByPk(id)
+    if(!afiliado){
+      return res.status(404).json({message: "No se encontro el afiliado"})
+    }
+    await afiliado.destroy()
+    return res.status(200).json({message: "Afiliado borrado exitosamente"})
+  } catch (error) {
+    return res.status(500).json({message: "Error interno del servidor", error: error.message})
+  }
+};
+
+ const getGrupoFamiliar = async (req, res) => {
+  try {
+    const nroGrupoFamiliar = req.params.nroGrupoFamiliar;
+    const afiliados = await Afiliado.findAll({
+      where: {
+        numeroGrupoFamiliar: nroGrupoFamiliar
+      }
+    });
+    if (!afiliados) {
+      return res.status(404).json({ message: "No se encontraron afiliados del grupo familiar" });
+    }
+    return res.status(200).json(afiliados)
+  } catch (error) {
+    return res.status(500).json({message: "Error interno del servidor", error: error.message})
+  }
+};
+
+module.exports = {
+  getAfiliadoById,
+  createAfiliado,
+  updateAfiliado,
+  deleteAfiliado,
+  getGrupoFamiliar
+}

@@ -1,16 +1,19 @@
-import express from "express";
-import {
-  getSituacionById,
+const express = require("express");
+const {
+  getSituacionesByAfiliado,
+  getSituacionesByGrupoFamiliar,
   createSituacion,
   updateSituacion,
   deleteSituacion
-} from "../controllers/situacionesController.js";
+} = require("../controllers/situacionesController.js");
+const validarSituacion = require('../middleware/validarSituacion.js')
 
 const router = express.Router();
 
-router.get("/:id", getSituacionById);
-router.post("/:id", createSituacion);
-router.put("/:id", updateSituacion);
+router.get("/:afiliadoId", getSituacionesByAfiliado);
+router.get("/grupoFamiliar/:nroGrupoFamiliar", getSituacionesByGrupoFamiliar);
+router.post("/:afiliadoId", validarSituacion, createSituacion);
+router.put("/:id", validarSituacion, updateSituacion);
 router.delete("/:id", deleteSituacion);
 
-export default router;
+module.exports = router;
