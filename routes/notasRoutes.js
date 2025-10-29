@@ -9,6 +9,6 @@ const router = Router();
 
 router.get("/:afiliadoId", getNotasByAfiliado);
 router.get("/:afiliadoId/:prestadorId", getNotasByAfiliadoAndPrestador);
-router.post("/:turnoId", createNota);
+router.post("/", createNota);
 
 module.exports = router;

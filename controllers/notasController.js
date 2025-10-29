@@ -29,11 +29,6 @@ const getNotasByAfiliadoAndPrestador = async (req, res) => {
 
 const createNota = async (req, res) => {
   try {
-    const turnoId = req.params.turnoId
-    const turno = await Turno.findByPk(turnoId)
-    if(!turno){
-      return res.status(404).json({message: "No se encontro el turno indicado"})
-    }
     const nota = await Nota.create({...req.body})
     if(nota === Sequelize.ValidationError){
       return res.status(400).json(nota)

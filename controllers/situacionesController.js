@@ -37,11 +37,6 @@ const getSituacionesByGrupoFamiliar = async (req, res) => {
 
 const createSituacion = async (req, res) => {
   try {
-    const afiliadoId = req.params.afiliadoId
-    const afiliado = await Afiliado.findByPk(afiliadoId)
-    if(!afiliado){
-      return res.status(404).json({message: "No se encontro el afiliado"})
-    }
     const situacion = await Situacion.create({...req.body})
     if(situacion === Sequelize.ValidationError){
       return res.status(400).json(situacion)

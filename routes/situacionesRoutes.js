@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get("/:afiliadoId", getSituacionesByAfiliado);
 router.get("/grupoFamiliar/:nroGrupoFamiliar", getSituacionesByGrupoFamiliar);
-router.post("/:afiliadoId", createSituacion);
+router.post("/", createSituacion);
 router.put("/:id", updateSituacion);
 router.delete("/:id", deleteSituacion);
 
