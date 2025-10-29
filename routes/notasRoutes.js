@@ -10,6 +10,6 @@ const router = Router();
 
 router.get("/:afiliadoId", getNotasByAfiliado);
 router.get("/:afiliadoId/:prestadorId", getNotasByAfiliadoAndPrestador);
-router.post("/", validarNota, createNota);
+router.post("/:turnoId", validarNota, createNota);
 
 module.exports = router;

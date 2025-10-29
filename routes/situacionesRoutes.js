@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get("/:afiliadoId", getSituacionesByAfiliado);
 router.get("/grupoFamiliar/:nroGrupoFamiliar", getSituacionesByGrupoFamiliar);
-router.post("/", validarSituacion, createSituacion);
+router.post("/:afiliadoId", validarSituacion, createSituacion);
 router.put("/:id", validarSituacion, updateSituacion);
 router.delete("/:id", deleteSituacion);
 
