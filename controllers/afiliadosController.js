@@ -1,4 +1,4 @@
-const { Afiliado } = require('../database/models')
+const { Afiliado, Sequelize } = require('../database/models')
 
 const getAfiliadoById = async (req, res) => {
   try {

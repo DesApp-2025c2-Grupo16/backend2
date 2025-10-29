@@ -4,7 +4,7 @@ const getSituacionesByAfiliado = async (req, res) => {
   try {
     const afiliadoId = req.params.afiliadoId
     const situaciones = await Situacion.findAll({where: {AfiliadoId: afiliadoId}})
-    if(!situaciones){
+    if(situaciones.length === 0){
       return res.status(404).json({message: "No se encontraron situaciones del afiliado"})
     }
     return res.status(200).json(situaciones)
@@ -46,7 +46,6 @@ const createSituacion = async (req, res) => {
     if(situacion === Sequelize.ValidationError){
       return res.status(400).json(situacion)
     }
-    await afiliado.addSituacion(situacion)
     return res.status(201).json(situacion)
   } catch (error) {
     return res.status(500).json({message: "Error interno del servidor", error: error.message})
