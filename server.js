@@ -13,6 +13,7 @@ const turnosRoutes= require( "./routes/turnosRoutes.js")
 const historialRoutes= require( "./routes/notasRoutes.js")
 const autorizacionesRoutes = require('./routes/autorizacionesRoutes.js')
 const recetasRoutes = require('./routes/recetasRoutes.js')
+const reintegrosRoutes = require('./routes/reintegrosRoutes.js')
 //import db from "./database/models/index.js"
 
 const db = require('./database/models') 
@@ -32,6 +33,7 @@ app.use("/turnos", turnosRoutes);
 app.use("/notas", historialRoutes);
 app.use('/autorizaciones', autorizacionesRoutes);
 app.use('/recetas', recetasRoutes);
+app.use('/reintegros', reintegrosRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
