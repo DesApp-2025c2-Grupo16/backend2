@@ -4,11 +4,12 @@ const {
   getNotasByAfiliadoAndPrestador,
   createNota
 } = require("../controllers/notasController.js");
+const validarNota = require('../middleware/validarNota.js')
 
 const router = Router();
 
 router.get("/:afiliadoId", getNotasByAfiliado);
 router.get("/:afiliadoId/:prestadorId", getNotasByAfiliadoAndPrestador);
-router.post("/", createNota);
+router.post("/", validarNota, createNota);
 
 module.exports = router;
