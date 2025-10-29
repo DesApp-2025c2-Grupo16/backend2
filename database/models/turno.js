@@ -17,9 +17,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Turno.init({
-    fecha: DataTypes.DATE,
-    descripcion: DataTypes.STRING,
-    especialidad: DataTypes.STRING
+    fecha: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    descripcion: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    especialidad: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Turno',

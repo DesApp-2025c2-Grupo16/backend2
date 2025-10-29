@@ -17,18 +17,54 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Reintegro.init({
-    fecha: DataTypes.DATE,
-    estado: DataTypes.STRING,
-    asunto: DataTypes.STRING,
-    especialidad: DataTypes.STRING,
-    lugar: DataTypes.STRING,
-    fechaFactura: DataTypes.DATE,
-    cuitFacturado: DataTypes.STRING,
-    valorFacturado: DataTypes.INTEGER,
-    personaFacturada: DataTypes.STRING,
-    formaDePago: DataTypes.STRING,
-    cbu: DataTypes.INTEGER,
-    observacion: DataTypes.STRING
+    fecha: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    estado: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    asunto: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    especialidad: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lugar: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    fechaFactura: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    cuitFacturado: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    valorFacturado: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    personaFacturada: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    formaDePago: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    cbu: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    observacion: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Reintegro',

@@ -20,11 +20,26 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Afiliado.init({
-    numeroGrupoFamiliar: DataTypes.INTEGER,
-    numeroIntegrate: DataTypes.INTEGER,
-    nombre: DataTypes.STRING,
-    apellido: DataTypes.STRING,
-    parentesco: DataTypes.STRING
+    numeroGrupoFamiliar: { 
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    numeroIntegrate: { 
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    nombre: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    apellido: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    parentesco: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Afiliado',

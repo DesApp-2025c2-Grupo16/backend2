@@ -17,10 +17,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Nota.init({
-    descripcion: DataTypes.STRING,
-    motivo: DataTypes.STRING,
-    doctor: DataTypes.STRING,
-    fecha: DataTypes.DATE
+    descripcion: { 
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    motivo: { 
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    doctor: { 
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    fecha: { 
+      type: DataTypes.DATE,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Nota',

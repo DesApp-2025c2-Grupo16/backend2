@@ -16,11 +16,26 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Autorizacion.init({
-    fecha: DataTypes.DATE,
-    estado: DataTypes.STRING,
-    asunto: DataTypes.STRING,
-    lugar: DataTypes.STRING,
-    observacion: DataTypes.STRING
+    fecha: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    estado: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    asunto: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lugar: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    observacion: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Autorizacion',

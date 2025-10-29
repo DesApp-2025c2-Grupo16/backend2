@@ -15,9 +15,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Situacion.init({
-    descripcion: DataTypes.STRING,
-    fechaInicio: DataTypes.DATE,
-    fechaFin: DataTypes.DATE
+    descripcion: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    fechaInicio: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    fechaFin: {
+      type: DataTypes.DATE,
+      allowNull: true
+    }
   }, {
     sequelize,
     modelName: 'Situacion',
