@@ -4,16 +4,15 @@ const {
   getSituacionesByGrupoFamiliar,
   createSituacion,
   updateSituacion,
-  deleteSituacion
 } = require("../controllers/situacionesController.js");
 const validarSituacion = require('../middleware/validarSituacion.js')
+const validarSituacionModificacion = require('../middleware/validarSituacionModificacion.js')
 
 const router = express.Router();
 
 router.get("/:afiliadoId", getSituacionesByAfiliado);
 router.get("/grupoFamiliar/:nroGrupoFamiliar", getSituacionesByGrupoFamiliar);
 router.post("/:afiliadoId", validarSituacion, createSituacion);
-router.put("/:id", validarSituacion, updateSituacion);
-router.delete("/:id", deleteSituacion);
+router.patch("/:id", validarSituacionModificacion, updateSituacion);
 
 module.exports = router;

@@ -61,29 +61,10 @@ const updateSituacion = async (req, res) => {
     if(!situacion){
       return res.status(404).json({message: "No se encontro la situacion"})
     }
-    const {descripcion, fechaFin} = req.body
-    if(descripcion){
-      situacion.descripcion = descripcion
-    }
-    if(fechaFin){
-      situacion.fechaFin = fechaFin
-    }
+    const {fechaFin} = req.body
+    situacion.fechaFin = fechaFin
     await situacion.save()
     return res.status(200).json(situacion)
-  } catch (error) {
-    return res.status(500).json({message: "Error interno del servidor", error: error.message})
-  }
-};
-
-const deleteSituacion = async (req, res) => {
-  try {
-    const id = req.params.id
-    const situacion = await Situacion.findByPk(id)
-    if(!situacion){
-      return res.status(404).json({message: "No se encontro la situacion"})
-    }
-    await situacion.destroy()
-    return res.status(200).json({message: "Situacion eliminada exitosamente"})
   } catch (error) {
     return res.status(500).json({message: "Error interno del servidor", error: error.message})
   }
