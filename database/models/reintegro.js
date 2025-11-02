@@ -68,6 +68,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Reintegro',
+    timestamps: false
   });
   return Reintegro;
 };
