@@ -1,4 +1,4 @@
-const { Autorizacion, Prestador } = require('../database/models')
+const { Autorizacion, Prestador, Sequelize } = require('../database/models')
 
 const getAutorizacionesByPrestador = async (req, res) => {
     try {
@@ -56,8 +56,21 @@ const updateAutorizacion = async (req, res) => {
     }
 }
 
+const createAutorizacion = async (req,res) => {
+    try {
+        const autorizacion = Autorizacion.create({...req.body})
+        if(autorizacion === Sequelize.ValidationError){
+            return res.status(400).json(autorizacion)
+        }   
+        return res.status(201).json(autorizacion)
+    } catch (error) {
+        return res.status(500).json({message: "Error interno del servidor", error: error.message})
+    }
+}
+
 module.exports = {
     getAutorizacionesByPrestador,
     getAutorizacionesByPrestadorAndEstado,
-    updateAutorizacion
+    updateAutorizacion,
+    createAutorizacion
 }

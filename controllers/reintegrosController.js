@@ -1,4 +1,4 @@
-const { Reintegro, Prestador } = require('../database/models')
+const { Reintegro, Prestador, Sequelize } = require('../database/models')
 
 const getReintegrosByPrestador = async (req, res) => {
     try {
@@ -56,8 +56,21 @@ const updateReintegro = async (req, res) => {
     }
 }
 
+const createReintegro = async (req,res) => {
+    try {
+        const reintegro = Reintegro.create({...req.body})
+        if(reintegro === Sequelize.ValidationError){
+            return res.status(400).json(reintegro)
+        }   
+        return res.status(201).json(reintegro)
+    } catch (error) {
+        return res.status(500).json({message: "Error interno del servidor", error: error.message})
+    }
+}
+
 module.exports = {
     getReintegrosByPrestador,
     getReintegrosByPrestadorAndEstado,
-    updateReintegro
+    updateReintegro,
+    createReintegro
 }

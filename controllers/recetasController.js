@@ -1,4 +1,4 @@
-const { Receta, Prestador } = require('../database/models')
+const { Receta, Prestador, Sequelize } = require('../database/models')
 
 const getRecetasByPrestador = async (req, res) => {
     try {
@@ -56,8 +56,21 @@ const updateReceta = async (req, res) => {
     }
 }
 
+const createReceta = async (req,res) => {
+    try {
+        const receta = Receta.create({...req.body})
+        if(receta === Sequelize.ValidationError){
+            return res.status(400).json(receta)
+        }   
+        return res.status(201).json(receta)
+    } catch (error) {
+        return res.status(500).json({message: "Error interno del servidor", error: error.message})
+    }
+}
+
 module.exports = {
     getRecetasByPrestador,
     getRecetasByPrestadorAndEstado,
-    updateReceta
+    updateReceta,
+    createReceta
 }

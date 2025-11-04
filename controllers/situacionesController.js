@@ -74,6 +74,5 @@ module.exports = {
   getSituacionesByAfiliado,
   getSituacionesByGrupoFamiliar,
   createSituacion,
-  updateSituacion,
-  deleteSituacion
+  updateSituacion
 }

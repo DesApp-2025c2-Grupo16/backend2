@@ -1,7 +1,7 @@
 const schemaSolicitudModificacion = require('./schema/schemaAutorizacionModificacion')
 
 const validarSolicitudModificacion = (req, res, next) => {
-    const {error} = schemaSolicitudModificacion.validate(req.body)
+    const {error} = schemaSolicitudModificacion.validate(req.body, {abortEarly: false})
     if(error){
         return res.status(400).json({message: "datos invalidos", error: error})
     }
