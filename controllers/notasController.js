@@ -47,8 +47,20 @@ const createNota = async (req, res) => {
   }
 };
 
+const updateNota = async (req, res) => {
+  try {
+    const id = req.params.id
+    await Nota.update(req.body, {where: {id: id}})
+    const nota = await Nota.findByPk(id)
+    return res.status(200).json(nota)
+  } catch (error) {
+    return res.status(500).json({message: "Error interno del servidor", error: error.message})
+  }
+}
+
 module.exports = {
   getNotasByAfiliado,
   getNotasByAfiliadoAndPrestador,
   createNota,
+  updateNota
 }

@@ -2,13 +2,15 @@ const express = require("express");
 const {
   getTurnosByPrestador,
   getTurnosByPrestadorAndEspecialidad,
-  createSituacion
+  createTurno,
+  updateTurno
 } = require("../controllers/turnosController.js");
 
 const router = express.Router();
 
 router.get("/:prestadorId", getTurnosByPrestador);
 router.get("/:prestadorId/:especialidad", getTurnosByPrestadorAndEspecialidad);
-router.post("/", createSituacion)
+router.post("/", createTurno)
+router.patch("/:id", updateTurno)
 
 module.exports = router;

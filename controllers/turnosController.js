@@ -26,7 +26,7 @@ const getTurnosByPrestadorAndEspecialidad = async (req, res) => {
   }
 };
 
-const createSituacion = async (req, res) => {
+const createTurno = async (req, res) => {
   try {
      const turno = await Turno.create({...req.body})
         if(turno === Sequelize.ValidationError){
@@ -38,8 +38,20 @@ const createSituacion = async (req, res) => {
   }
 }
 
+const updateTurno = async (req, res) => {
+  try {
+    const id = req.params.id
+    await Turno.update(req.body, {where: {id: id}})
+    const turno = await Turno.findByPk(id)
+    return res.status(200).json(turno)
+  } catch (error) {
+    return res.status(500).json({message: "Error interno del servidor", error: error.message})
+  }
+}
+
 module.exports = {
   getTurnosByPrestador,
   getTurnosByPrestadorAndEspecialidad,
-  createSituacion
+  createTurno,
+  updateTurno
 }

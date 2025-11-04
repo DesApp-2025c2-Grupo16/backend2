@@ -58,7 +58,7 @@ const updateReceta = async (req, res) => {
 
 const createReceta = async (req,res) => {
     try {
-        const receta = Receta.create({...req.body})
+        const receta = await Receta.create({...req.body})
         if(receta === Sequelize.ValidationError){
             return res.status(400).json(receta)
         }   

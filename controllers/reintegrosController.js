@@ -58,7 +58,7 @@ const updateReintegro = async (req, res) => {
 
 const createReintegro = async (req,res) => {
     try {
-        const reintegro = Reintegro.create({...req.body})
+        const reintegro = await Reintegro.create({...req.body})
         if(reintegro === Sequelize.ValidationError){
             return res.status(400).json(reintegro)
         }   
