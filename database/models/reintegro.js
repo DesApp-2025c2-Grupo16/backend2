@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Reintegro extends Model {
     /**
@@ -11,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Reintegro.belongsTo(models.Afiliado)
-      Reintegro.belongsTo(models.Prestador)//el que maneja la solicitud
+      Reintegro.belongsTo(models.Afiliado);
+      Reintegro.belongsTo(models.Prestador);//el que maneja la solicitud
       //relacion con prestador que atendio el turno
     }
   }
@@ -68,7 +66,15 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Reintegro',
-    timestamps: false
+    timestamps: false,
+    defaultScope: {
+      include: [
+        {
+          association: 'Afiliado',
+          attributes: ['id', 'nombre', 'apellido']
+        }
+      ]
+    }
   });
   return Reintegro;
 };
