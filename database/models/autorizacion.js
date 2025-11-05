@@ -35,11 +35,27 @@ module.exports = (sequelize, DataTypes) => {
     observacion: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    especialidad: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    diasDeInternacion: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     sequelize,
     modelName: 'Autorizacion',
-    timestamps: false
+    timestamps: false,
+    defaultScope: {
+      include: [
+        {
+          association: 'Afiliado',
+          attributes: ['id', 'nombre', 'apellido']
+        }
+      ]
+    }
   });
   return Autorizacion;
 };
