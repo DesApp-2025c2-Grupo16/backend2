@@ -1,4 +1,4 @@
-const { Turno } = require('../database/models')
+const { Turno , Sequelize} = require('../database/models')
 
 const getTurnosByPrestador = async (req, res) => {
   try {
@@ -28,11 +28,11 @@ const getTurnosByPrestadorAndEspecialidad = async (req, res) => {
 
 const createTurno = async (req, res) => {
   try {
-     const turno = await Turno.create({...req.body})
-        if(turno === Sequelize.ValidationError){
-              return res.status(400).json(turno)
-            }
-        return res.status(201).json({turno})
+    const turno = await Turno.create({...req.body})
+    if(turno === Sequelize.ValidationError){
+      return res.status(400).json(turno)
+    }
+    return res.status(201).json({turno})
   } catch (error) {
     return res.status(500).json({message: "Error interno del servidor", error: error.message})
   }
