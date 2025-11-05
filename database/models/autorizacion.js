@@ -39,7 +39,15 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Autorizacion',
-    timestamps: false
+    timestamps: false,
+    defaultScope: {
+      include: [
+        {
+          association: 'Afiliado',
+          attributes: ['id', 'nombre', 'apellido']
+        }
+      ]
+    }
   });
   return Autorizacion;
 };

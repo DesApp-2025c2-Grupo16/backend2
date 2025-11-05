@@ -47,7 +47,15 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Receta',
-    timestamps: false
+    timestamps: false,
+    defaultScope: {
+      include: [
+        {
+          association: 'Afiliado',
+          attributes: ['id', 'nombre', 'apellido']
+        }
+      ]
+    }
   });
   return Receta;
 };
