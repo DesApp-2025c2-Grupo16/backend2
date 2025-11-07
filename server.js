@@ -14,11 +14,10 @@ const historialRoutes= require( "./routes/notasRoutes.js")
 const autorizacionesRoutes = require('./routes/autorizacionesRoutes.js')
 const recetasRoutes = require('./routes/recetasRoutes.js')
 const reintegrosRoutes = require('./routes/reintegrosRoutes.js')
-//import db from "./database/models/index.js"
 
 const db = require('./database/models') 
 
-db.sequelize.sync({alter: false})
+db.sequelize.sync({force: false})
 
 const app = express();
 const PORT = 3001;

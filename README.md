@@ -40,13 +40,16 @@ Incluye la base de datos de:
 
 1. Clonar el repositorio:
    ```bash
-   https://github.com/DesApp-2025c2-Grupo16/backend2.git
+   git clone https://github.com/DesApp-2025c2-Grupo16/backend2.git
    cd backend2
-2. Instalar dependencias:
+2. Crear los contenedores de docker:
+   ```bash
+   docker compose up -d
+3. Instalar dependencias:
 npm install
-3. Levantar en modo desarrollo:
+4. Levantar en modo desarrollo:
 npm run dev
-4. Abrir en el navegador:
+5. Abrir en el navegador:
 http://localhost:3001
 
 ---
