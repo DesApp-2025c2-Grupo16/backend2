@@ -20,6 +20,10 @@ module.exports = {
       {
         id: 2,
         nombre: "Roberto Gomez"
+      },
+      {
+        id: 3,
+        nombre: "Pedro Martinez"
       }
     ], {});
   },
@@ -31,5 +35,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    await queryInterface.bulkDelete('Prestadors', null, {});
   }
 };

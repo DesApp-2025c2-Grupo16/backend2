@@ -13,9 +13,6 @@ module.exports = {
      * }], {});
     */
     await queryInterface.bulkInsert('Receta', [
-      {
-      
-      }
     ], {});
   },
 
@@ -26,5 +23,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    await queryInterface.bulkDelete('Receta', null, {});
   }
 };
