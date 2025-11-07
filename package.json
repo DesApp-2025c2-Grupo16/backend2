@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "node server.js ",
-    "dev": "nodemon server.js && npx sequelize-cli db:seed:undo:all && npx sequelize-cli db:seed:all",
+    "dev": "nodemon server.js ",
     "db": "npx sequelize-cli db:seed:undo:all && npx sequelize-cli db:seed:all"
   },
   "dependencies": {
