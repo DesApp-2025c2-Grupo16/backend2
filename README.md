@@ -46,9 +46,11 @@ Incluye la base de datos de:
    ```bash
    docker compose up -d
 3. Instalar dependencias:
-npm install
+   ```bash
+   npm install
 4. Levantar en modo desarrollo:
-npm run dev
+   ```bash
+   npm run dev
 5. Abrir en el navegador:
 http://localhost:3001
 
