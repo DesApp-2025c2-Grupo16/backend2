@@ -42,13 +42,9 @@ const updateReintegro = async (req, res) => {
         if(!reintegro){
             return res.status(404).json({message: "No se encontro el reintegro"})
         }
-        const {estado, observacion} = req.body
-        if(estado){
-            reintegro.estado = estado
-        }
-        if(observacion){
-            reintegro.observacion = observacion
-        }
+        const {estado, motivoEstado} = req.body
+        reintegro.estado = estado
+        reintegro.motivoEstado = motivoEstado
         await reintegro.save()
         return res.status(200).json(reintegro)
     } catch (error) {
