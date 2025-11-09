@@ -1,4 +1,4 @@
-const schemaSolicitudModificacion = require('./schema/schemaAutorizacionModificacion')
+const schemaSolicitudModificacion = require('./schema/schemaSolicitudModificacion')
 
 const validarSolicitudModificacion = (req, res, next) => {
     const {error} = schemaSolicitudModificacion.validate(req.body, {abortEarly: false})
