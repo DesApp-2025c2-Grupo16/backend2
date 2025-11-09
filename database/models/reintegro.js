@@ -56,7 +56,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     cbu: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false
     },
     observacion: {
