@@ -38,9 +38,9 @@ const createNota = async (req, res) => {
     if(nota === Sequelize.ValidationError){
       return res.status(400).json(nota)
     }
-    await nota.addTurno(turno)
-    await nota.addAfiliado(turno.AfiliadoId)
-    await nota.addPrestador(turno.prestadorId)
+    await nota.setTurno(turno)
+    await nota.setAfiliado(turno.AfiliadoId)
+    await nota.setPrestador(turno.prestadorId)
     return res.status(201).json(nota)
   } catch (error) {
     return res.status(500).json({message: "Error interno del servidor", error: error.message})
