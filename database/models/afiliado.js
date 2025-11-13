@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    numeroIntegrate: { 
+    numeroIntegrante: { 
       type: DataTypes.INTEGER,
       allowNull: false
     },

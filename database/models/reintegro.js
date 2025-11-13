@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    motivoEstado: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     asunto: {
       type: DataTypes.STRING,
       allowNull: false
@@ -56,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     cbu: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false
     },
     observacion: {

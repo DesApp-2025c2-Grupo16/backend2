@@ -1,0 +1,20 @@
+services:
+  PrestadoresDB: 
+    image: mysql
+    container_name: PrestadoresDB
+    ports: 
+      - "3307:3306"
+    environment:  
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: prestadores
+    volumes:
+      - PrestadoresData:/var/lib/mysql
+  panel-phpmyadmin:
+    image: phpmyadmin
+    container_name: panel-phpmyadmin
+    ports:
+      - "8080:80"
+    links:
+      - "PrestadoresDB:db"
+volumes:
+  PrestadoresData:

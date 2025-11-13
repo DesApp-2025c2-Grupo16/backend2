@@ -42,13 +42,9 @@ const updateReceta = async (req, res) => {
         if(!receta){
             return res.status(404).json({message: "No se encontro la receta"})
         }
-        const {estado, observacion} = req.body
-        if(estado){
-            receta.estado = estado
-        }
-        if(observacion){
-            receta.observacion = observacion
-        }
+        const {estado, motivoEstado} = req.body
+        reintegro.estado = estado
+        reintegro.motivoEstado = motivoEstado
         await receta.save()
         return res.status(200).json(receta)
     } catch (error) {

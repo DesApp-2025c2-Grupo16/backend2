@@ -28,28 +28,31 @@ const getTurnosByPrestadorAndEspecialidad = async (req, res) => {
 
 const getTurnosByPrestadorAndFecha = async (req, res) => {
   try {
-    const prestadorId = req.params.prestadorId
-    const fecha = req.params.fecha
-    const minFecha = new Date(fecha)
-    const maxFecha = new Date(fecha)
-    maxFecha.setDate(maxFecha.getDate()+1)
-    const turnos = await Turno.findAll(
-      {where: 
-        {
-          PrestadorId: prestadorId, 
-          fecha: {
-            [Sequelize.Op.gte]: minFecha,
-            [Sequelize.Op.lt]: maxFecha
-          }
-        }})
-    if(turnos.length === 0){
-      return res.status(404).json({message: "No existen turnos para este dia"})
-    }
-    return res.status(200).json(turnos)
+    const prestadorId = req.params.prestadorId;
+    const fecha = req.params.fecha;
+
+    const minFecha = new Date(fecha);
+    const maxFecha = new Date(fecha);
+    maxFecha.setDate(maxFecha.getDate() + 1);
+
+    const turnos = await Turno.findAll({
+      where: {
+        PrestadorId: prestadorId,
+        fecha: {
+          [Sequelize.Op.gte]: minFecha,
+          [Sequelize.Op.lt]: maxFecha,
+        },
+      },
+    });
+
+    // Antes devolvías 404. Ahora devolvemos 200 con array vacío.
+    return res.status(200).json(turnos);
   } catch (error) {
-    return res.status(500).json({message: "Error interno del servidor", error: error.message})
+    return res
+      .status(500)
+      .json({ message: "Error interno del servidor", error: error.message });
   }
-}
+};
 
 const createTurno = async (req, res) => {
   try {
