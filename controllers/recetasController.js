@@ -37,20 +37,29 @@ const getRecetasByPrestadorAndEstado = async (req, res) => {
 
 const updateReceta = async (req, res) => {
     try {
-        const id = req.params.id
-        const receta = await Receta.findByPk(id)
-        if(!receta){
-            return res.status(404).json({message: "No se encontro la receta"})
+        const id = req.params.id;
+        const receta = await Receta.findByPk(id);
+
+        if (!receta) {
+            return res.status(404).json({ message: "No se encontró la receta" });
         }
-        const {estado, motivoEstado} = req.body
-        reintegro.estado = estado
-        reintegro.motivoEstado = motivoEstado
-        await receta.save()
-        return res.status(200).json(receta)
+
+        const { estado, motivoEstado } = req.body;
+
+        if (estado) receta.estado = estado;
+        if (motivoEstado !== undefined) receta.motivoEstado = motivoEstado;
+
+        await receta.save();
+
+        return res.status(200).json(receta);
     } catch (error) {
-        return res.status(500).json({message: "Error interno del servidor", error: error.message})
+        return res.status(500).json({
+            message: "Error interno del servidor",
+            error: error.message,
+        });
     }
-}
+};
+
 
 const createReceta = async (req,res) => {
     try {

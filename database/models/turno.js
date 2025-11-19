@@ -28,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
     especialidad: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    estado: {
+      type: DataTypes.STRING,
+      defaultValue: "Pendiente"
     }
   }, {
     sequelize,
