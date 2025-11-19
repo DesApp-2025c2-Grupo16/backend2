@@ -3,58 +3,102 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
     await queryInterface.bulkInsert('Turnos', [
       {
-        id:1,
-        fecha: new Date(2025, 9, 28, 10, 0, 0, 0),
+        id: 1,
+        fecha: new Date(2025, 10, 10, 12 - 3, 0),
         descripcion: "Control",
         especialidad: "Traumatologia",
+        estado: "Pendiente",
         AfiliadoId: 1,
         PrestadorId: 1
       },
       {
         id: 2,
-        fecha: new Date(2025, 7, 14, 11, 45, 0, 0),
+        fecha: new Date(2025, 10, 10, 13 - 3, 0),
         descripcion: "Tomografia",
         especialidad: "Laboratorio",
+        estado: "Pendiente",
         AfiliadoId: 1,
         PrestadorId: 1
       },
       {
         id: 3,
-        fecha: new Date(2025, 6, 25, 14, 0, 0, 0),
+        fecha: new Date(2025, 10, 10, 14 - 3, 0),
         descripcion: "Rayos X",
         especialidad: "Laboratorio",
+        estado: "Pendiente",
+        AfiliadoId: 1,
+        PrestadorId: 1
+      },
+      {
+        id: 4,
+        fecha: new Date(2025, 10, 10, 15 - 3, 0),
+        descripcion: "Control de rutina",
+        especialidad: "Clínica médica",
+        estado: "Pendiente",
         AfiliadoId: 1,
         PrestadorId: 1
       },
       {
         id: 5,
-        fecha: new Date(2025, 10, 10, 12, 30, 0, 0),
-        descripcion: "Control de rutina",
+        fecha: new Date(2025, 10, 10, 16 - 3, 0),
+        descripcion: "Consulta de rutina",
         especialidad: "Clínica médica",
+        estado: "Pendiente",
+        AfiliadoId: 3,
+        PrestadorId: 1
+      },
+      {
+        id: 6,
+        fecha: new Date(2025, 10, 10, 17 - 3, 0),
+        descripcion: "Control cardiológico",
+        especialidad: "Cardiología",
+        estado: "Pendiente",
         AfiliadoId: 1,
         PrestadorId: 1
+      },
+      {
+        id: 7,
+        fecha: new Date(2025, 10, 10, 18 - 3, 0),
+        descripcion: "Estudio oftalmológico",
+        especialidad: "Oftalmología",
+        estado: "Pendiente",
+        AfiliadoId: 5,
+        PrestadorId: 1
+      },
+      {
+        id: 8,
+        fecha: new Date(2025, 10, 10, 19 - 3, 0),
+        descripcion: "Control urológico",
+        especialidad: "Urología",
+        estado: "Pendiente",
+        AfiliadoId: 2,
+        PrestadorId: 1
+      },
+      {
+        id: 9,
+        fecha: new Date(2025, 10, 10, 20 - 3, 0),
+        descripcion: "Consulta dermatológica",
+        especialidad: "Dermatología",
+        estado: "Pendiente",
+        AfiliadoId: 4,
+        PrestadorId: 1
+      },
+      {
+        id: 10,
+        fecha: new Date(2025, 10, 10, 21 - 3, 0),
+        descripcion: "Evaluación psiquiátrica",
+        especialidad: "Psiquiatría",
+        estado: "Pendiente",
+        AfiliadoId: 5,
+        PrestadorId: 1
       }
+
     ], {});
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
     await queryInterface.bulkDelete('Turnos', null, {});
   }
 };
