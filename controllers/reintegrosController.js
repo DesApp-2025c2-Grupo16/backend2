@@ -13,7 +13,7 @@ const getReintegrosByPrestador = async (req, res) => {
         }
         return res.status(200).json(reintegros)
     } catch (error) {
-        return res.status(500).json({message: "Error interno del servidors", error: error.message, fn: error.name,cn: error.stack,ln: error.toString()})
+        return res.status(500).json({message: "Error interno del servidor", error: error.message})
     }
 }
 
@@ -31,7 +31,7 @@ const getReintegrosByPrestadorAndEstado = async (req, res) => {
         }
         return res.status(200).json(reintegros)
     } catch (error) {
-        return res.status(500).json({message: "Error interno del servidor", error: error.message, ec: error.cause})
+        return res.status(500).json({message: "Error interno del servidor", error: error.message})
     }
 }
 
