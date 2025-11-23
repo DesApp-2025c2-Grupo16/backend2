@@ -17,12 +17,25 @@ module.exports = (sequelize, DataTypes) => {
       Prestador.hasMany(models.Turno)
       Prestador.hasMany(models.Nota)
       Prestador.hasMany(models.RegistroSolicitud)
+      Prestador.hasMany(Prestador, {
+        as: "medicos",
+        foreignKey: "centroId"
+      });
+      Prestador.belongsTo(Prestador, {
+        as: "centro",
+        foreignKey: "centroId"
+      });
     }
   }
   Prestador.init({
     nombre: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    esCentro: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     }
   }, {
     sequelize,
