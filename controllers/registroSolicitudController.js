@@ -7,11 +7,9 @@ const getRegistrosByPrestadorAndDate = async (req, res) => {
         if(!prestador){
             return res.status(404).json({message: "No se encontro el prestador"})
         }
-        const month = parseInt(req.query.month)
-        const year = parseInt(req.query.year)
-        const minFecha = new Date(year, month-1)
-        const maxFecha = new Date(year, month)
-        new Date()
+        const minFecha = new Date(req.query.minFecha)
+        const maxFecha = new Date(req.query.maxFecha)
+        minFecha.setDate(minFecha.getDate()-1)
         const registros = await RegistroSolicitud.findAll({
             where: {
                 PrestadorId: prestadorId,
