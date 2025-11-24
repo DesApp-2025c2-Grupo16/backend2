@@ -10,6 +10,7 @@
     "db": "npx sequelize-cli db:seed:undo:all && npx sequelize-cli db:seed:all"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "joi": "^18.0.1",

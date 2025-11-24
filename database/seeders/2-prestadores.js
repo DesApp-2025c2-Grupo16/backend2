@@ -14,16 +14,31 @@ module.exports = {
     */
     await queryInterface.bulkInsert('Prestadors', [
       {
-        id: 1,
-        nombre: "Paula Rodriguez"
+        "id": 1,
+        "nombre": "Clinica del sol",
+        "esCentro": true,
+        "contraseña": "$2b$10$AQOdiRldBGJuMTGTpOhvy.fkBZC4AQ2AZccMNyKW8LHnFn0f6r.3i"
       },
       {
-        id: 2,
-        nombre: "Roberto Gomez"
+        "id": 2,
+        "nombre": "Paula Rodriguez",
+        "esCentro": false,
+        "contraseña": "$2b$10$GNi1Jj7eGJAV0xH2IYX86efwTokJ9.SdLDbK9mhItxxRjFpaHeS2y",
+        "centroId": 1
       },
       {
-        id: 3,
-        nombre: "Pedro Martinez"
+        "id": 3,
+        "nombre": "Roberto Gomez",
+        "esCentro": false,
+        "contraseña": "$2b$10$Q2gKkgDM9MEaQRfOVQsjOurAyMAYYmp2.apqbzq9He8vjFzjt.X8G",
+        "centroId": 1
+      },
+      {
+        "id": 4,
+        "nombre": "Pedro Martinez",
+        "esCentro": false,
+        "contraseña": "$2b$10$VfjYPsYaWJ8K0ezqJ1BvVOSvHwz3KX5uZOVYvTrUpyoal3spBsP/.",
+        "centroId": 1
       }
     ], {});
   },
