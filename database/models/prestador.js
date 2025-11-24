@@ -36,11 +36,20 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false
+    },
+    contraseña: {
+      type: DataTypes.TEXT,
+      allowNull: false
     }
   }, {
     sequelize,
     modelName: 'Prestador',
-    timestamps: false
+    timestamps: false,
+    defaultScope: {
+      attributes: {
+        exclude: ["contraseña"]
+      }
+    }
   });
   return Prestador;
 };
