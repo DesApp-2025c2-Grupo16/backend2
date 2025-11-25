@@ -21,7 +21,7 @@ module.exports = {
         lugar: "Clínica Nueva Salud",
         observacion: "Solicito autorización para monitoreo Holter de 48 horas por antecedentes de taquicardia.",        
         AfiliadoId: 4,
-        PrestadorId: 1,
+        PrestadorId: 2,
         especialidad: "Cardiologia",
         diasDeInternacion: "0 dias"
       },
@@ -33,7 +33,7 @@ module.exports = {
         lugar: "Centro Médico El Sol",	
         observacion: "Solicito autorización para resonancia magnética por sospecha de rotura ligamentaria.",	
         AfiliadoId: 5,
-        PrestadorId: 1,
+        PrestadorId: 2,
         especialidad: "Traumatología",	
         diasDeInternacion: "0 días"
       },
@@ -45,7 +45,7 @@ module.exports = {
         lugar: "Clínica de la Visión Belgrano",	
         observacion: "Solicito autorización para corrección láser por miopía severa.",	
         AfiliadoId: 2,
-        PrestadorId: 1,
+        PrestadorId: 2,
         especialidad: "Oftalmología",	
         diasDeInternacion: "0 días"
       },
@@ -57,7 +57,7 @@ module.exports = {
         lugar: "Hospital Juan Cruz",
         observacion: "Solicito autorización para artroscopía de rodilla por desgarro de menisco interno.",
         AfiliadoId: 5,
-        PrestadorId: 1,
+        PrestadorId: 2,
         especialidad: "Traumatología",
         diasDeInternacion: "1 día"
       },
@@ -69,7 +69,7 @@ module.exports = {
         lugar: "Sanatorio Nuestra Señora",
         observacion: "Solicito autorización para amigdalectomía por infecciones respiratorias recurrentes.",
         AfiliadoId: 3,
-        PrestadorId: 1,
+        PrestadorId: 2,
         especialidad: "Otorrinolaringología",
         diasDeInternacion: "2 días",
       },
@@ -81,7 +81,7 @@ module.exports = {
         lugar: "Clínica Nueva Salud",
         observacion: "Solicito autorización para colecistectomía laparoscópica por cálculos biliares.",
         AfiliadoId: 4,
-        PrestadorId: 1,
+        PrestadorId: 2,
         especialidad: "Cirugía General",
         diasDeInternacion: "2 días"
       },
@@ -93,7 +93,7 @@ module.exports = {
         lugar: "Hospital San Lucas",
         observacion: "Solicito autorización para cirugía programada de hernia inguinal con seguimiento posoperatorio.",
         AfiliadoId: 1,
-        PrestadorId: 1,
+        PrestadorId: 2,
         especialidad: "Cirugía General",
         diasDeInternacion: "3 días"
       },
@@ -105,7 +105,7 @@ module.exports = {
         lugar: "Hospital San Lucas",
         observacion: "Solicito autorización para cesárea programada con internación previa y posterior control neonatal.",
         AfiliadoId: 2,
-        PrestadorId: 1,
+        PrestadorId: 2,
         especialidad: "Ginecología / Obstetricia",
         diasDeInternacion: "4 días"
       },
@@ -117,7 +117,7 @@ module.exports = {
         lugar: "Sanatorio Nuestra Señora",
         observacion: "Solicito autorización para internación y tratamiento endovenoso por pielonefritis.",
         AfiliadoId: 3,
-        PrestadorId: 1,
+        PrestadorId: 2,
         especialidad: "Clínica Médica",
         diasDeInternacion: "4 días"
       },
@@ -129,7 +129,7 @@ module.exports = {
         lugar: "Hospital San Lucas",
         observacion: "Solicito autorización para internación y tratamiento antibiótico intravenoso por neumonía bacteriana.",
         AfiliadoId: 1,
-        PrestadorId: 1,
+        PrestadorId: 2,
         especialidad: "Neumonología",
         diasDeInternacion: "5 días"
       }

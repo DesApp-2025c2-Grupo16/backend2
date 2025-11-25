@@ -28,7 +28,7 @@ module.exports = {
         cbu: 5739978261,
         observacion: "Cirugía de bypass realizada según indicación médica. Se solicita reintegro según cobertura del plan.",
         AfiliadoId: 1,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 2,
@@ -45,7 +45,7 @@ module.exports = {
         cbu: 2348812235,
         observacion: "Consulta por alergia cutánea con prescripción de tratamiento. Se presenta factura y se solicita reintegro según plan.",
         AfiliadoId: 2,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 3,
@@ -62,7 +62,7 @@ module.exports = {
         cbu: 8839201145,
         observacion: "Radiografía de rodilla izquierda",
         AfiliadoId: 5,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 4,
@@ -79,7 +79,7 @@ module.exports = {
         cbu: 5590128756,
         observacion: "Internación con control mensual de recuperación. Se solicita reintegro según cobertura del plan.",
         AfiliadoId: 3,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 5,
@@ -96,7 +96,7 @@ module.exports = {
         cbu: 6674821902,
         observacion: "Evaluación clínica en urgencia con estudios complementarios. Se solicita reintegro según cobertura del plan.",
         AfiliadoId: 4,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 6,
@@ -113,7 +113,7 @@ module.exports = {
         cbu: 5739978261,
         observacion: "Análisis de sangre preoperatorio solicitado para intervención programada. Se presenta factura para reintegro.",
         AfiliadoId: 1,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 7,
@@ -130,7 +130,7 @@ module.exports = {
         cbu: 6674821902,
         observacion: "Radiografía de control post fractura de tibia. Se presenta factura y se solicita reintegro según cobertura.",
         AfiliadoId: 4,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 8,
@@ -147,7 +147,7 @@ module.exports = {
         cbu: 2348812235,
         observacion: "Internación con seguimiento posoperatorio. Se solicita reintegro según cobertura del plan.",
         AfiliadoId: 2,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 9,
@@ -164,7 +164,7 @@ module.exports = {
         cbu: 8839201145,
         observacion: "Consulta médica por migrañas crónicas con estudios complementarios. Se solicita reintegro según plan.",
         AfiliadoId: 5,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 10,
@@ -181,7 +181,7 @@ module.exports = {
         cbu: 5590128756,
         observacion: "Estudio de laboratorio sin resultados concluyentes; se requerirá nueva muestra. Se presenta factura para reintegro.",
         AfiliadoId: 5,
-        PrestadorId: 1
+        PrestadorId: 2
       }
     ], {});
   },

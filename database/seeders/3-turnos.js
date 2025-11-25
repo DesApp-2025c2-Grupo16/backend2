@@ -11,7 +11,7 @@ module.exports = {
         especialidad: "Traumatologia",
         estado: "Pendiente",
         AfiliadoId: 1,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 2,
@@ -20,7 +20,7 @@ module.exports = {
         especialidad: "Laboratorio",
         estado: "Pendiente",
         AfiliadoId: 1,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 3,
@@ -29,7 +29,7 @@ module.exports = {
         especialidad: "Laboratorio",
         estado: "Pendiente",
         AfiliadoId: 1,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 4,
@@ -38,7 +38,7 @@ module.exports = {
         especialidad: "Clínica médica",
         estado: "Pendiente",
         AfiliadoId: 1,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 5,
@@ -47,7 +47,7 @@ module.exports = {
         especialidad: "Clínica médica",
         estado: "Pendiente",
         AfiliadoId: 3,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 6,
@@ -56,7 +56,7 @@ module.exports = {
         especialidad: "Cardiología",
         estado: "Pendiente",
         AfiliadoId: 1,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 7,
@@ -65,7 +65,7 @@ module.exports = {
         especialidad: "Oftalmología",
         estado: "Pendiente",
         AfiliadoId: 5,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 8,
@@ -74,7 +74,7 @@ module.exports = {
         especialidad: "Urología",
         estado: "Pendiente",
         AfiliadoId: 2,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 9,
@@ -83,7 +83,7 @@ module.exports = {
         especialidad: "Dermatología",
         estado: "Pendiente",
         AfiliadoId: 4,
-        PrestadorId: 1
+        PrestadorId: 2
       },
       {
         id: 10,
@@ -92,7 +92,7 @@ module.exports = {
         especialidad: "Psiquiatría",
         estado: "Pendiente",
         AfiliadoId: 5,
-        PrestadorId: 1
+        PrestadorId: 2
       }
 
     ], {});
