@@ -28,7 +28,7 @@ module.exports = {
         cbu: 5739978261,
         observacion: "Cirugía de bypass realizada según indicación médica. Se solicita reintegro según cobertura del plan.",
         AfiliadoId: 1,
-        PrestadorId: 2
+        PrestadorId: null
       },
       {
         id: 2,
@@ -113,7 +113,7 @@ module.exports = {
         cbu: 5739978261,
         observacion: "Análisis de sangre preoperatorio solicitado para intervención programada. Se presenta factura para reintegro.",
         AfiliadoId: 1,
-        PrestadorId: 2
+        PrestadorId: null
       },
       {
         id: 7,

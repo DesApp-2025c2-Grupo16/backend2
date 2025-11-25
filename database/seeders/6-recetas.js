@@ -23,7 +23,7 @@ module.exports = {
         presentacion: "Tabletas de 400 mg",
         observacion: "Uso para dolor de cabeza ocasional",
         AfiliadoId: 1,
-        PrestadorId: 2
+        PrestadorId: null
       },
       {
         id: 2,
@@ -35,7 +35,7 @@ module.exports = {
         presentacion: "Comprimidos de 10 mg",
         observacion: "Uso diario para síntomas de alergia estacional",
         AfiliadoId: 2,
-        PrestadorId: 2
+        PrestadorId: null
       },
       {
         id: 3,
@@ -47,7 +47,7 @@ module.exports = {
         presentacion: "Cápsulas de 500 mg",
         observacion: "Tratamiento por 7 días, tres dosis diarias",
         AfiliadoId: 3,
-        PrestadorId: 2
+        PrestadorId: null
       },
       {
         id: 4,
@@ -59,7 +59,7 @@ module.exports = {
         presentacion: "Tabletas de 50 mg",
         observacion: "Uso en episodios de dolor intenso, no exceder dosis recomendada",
         AfiliadoId: 4,
-        PrestadorId: 2
+        PrestadorId: null
       },
       {
         id: 5,
@@ -71,7 +71,7 @@ module.exports = {
         presentacion: "Comprimidos de 3 mg",
         observacion: "Uso para episodios de insomnio crónico.",
         AfiliadoId: 5,
-        PrestadorId: 2
+        PrestadorId: null
       },
       {
         id: 6,
@@ -83,7 +83,7 @@ module.exports = {
         presentacion: "Tabletas de 400 mg",
         observacion: "Uso para episodios de cefalea intensa. El afiliado refiere dolor pulsátil y sensibilidad a la luz.",
         AfiliadoId: 1,
-        PrestadorId: 2
+        PrestadorId: null
       },
       {
         id: 7,
@@ -95,7 +95,7 @@ module.exports = {
         presentacion: "Polvo para diluir",
         observacion: "El afiliado presentó diarrea y deshidratación leve. Se indicó reposición de líquidos y control de síntomas.",
         AfiliadoId: 2,
-        PrestadorId: 2
+        PrestadorId: null
       },
       {
         id: 8,
@@ -107,7 +107,7 @@ module.exports = {
         presentacion: "Comprimidos de 10 mg",
         observacion: "Tratamiento de presión arterial elevada.",
         AfiliadoId: 3,
-        PrestadorId: 2
+        PrestadorId: null
       },
       {
         id: 9,
@@ -119,7 +119,7 @@ module.exports = {
         presentacion: "Cápsulas de 500 mg",
         observacion: "Uso para infección sinusal.",
         AfiliadoId: 4,
-        PrestadorId: 2
+        PrestadorId: null
       },
       {
         id: 10,
@@ -131,7 +131,7 @@ module.exports = {
         presentacion: "Cápsulas de 20 mg",
         observacion: "Uso ante contractura muscular cervical por mala postura.",
         AfiliadoId: 5,
-        PrestadorId: 2
+        PrestadorId: null
       }
     ], {});
   },
