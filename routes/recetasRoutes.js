@@ -1,5 +1,6 @@
 const express = require('express')
 const { 
+    getRecetaById,
     getRecetasByPrestador,
     getRecetasByPrestadorAndEstado,
     updateReceta,
@@ -10,8 +11,9 @@ const validarReceta = require('../middleware/validarReceta')
 
 const router = express.Router()
 
-router.get('/:prestadorId', getRecetasByPrestador)
-router.get('/:prestadorId/:estado', getRecetasByPrestadorAndEstado)
+router.get('/:id', getRecetaById)
+router.get('/prestador/:prestadorId', getRecetasByPrestador)
+router.get('/prestador/:prestadorId/:estado', getRecetasByPrestadorAndEstado)
 router.patch('/:id', validarSolicitudModificacion, updateReceta)
 router.post('/', validarReceta, createReceta)
 

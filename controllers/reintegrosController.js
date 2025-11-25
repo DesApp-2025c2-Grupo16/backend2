@@ -1,5 +1,18 @@
 const { Reintegro, Prestador, Sequelize } = require('../database/models')
 
+const getReintegroById = async (req, res) => {
+    try {
+        const id = req.params.id
+        const reintegro = await Reintegro.findByPk(id)
+        if(!reintegro){
+            return res.status(404).json({message: "No se encontro el reintegro"})
+        }
+        return res.status(200).json(reintegro)
+    } catch (error) {
+        return res.status(500).json({message: "Error interno del servidor", error: error.message})
+    }
+}
+
 const getReintegrosByPrestador = async (req, res) => {
     try {
         const prestadorId = req.params.prestadorId
@@ -65,6 +78,7 @@ const createReintegro = async (req,res) => {
 }
 
 module.exports = {
+    getReintegroById,
     getReintegrosByPrestador,
     getReintegrosByPrestadorAndEstado,
     updateReintegro,

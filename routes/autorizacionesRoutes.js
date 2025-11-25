@@ -1,5 +1,6 @@
 const express = require('express')
 const { 
+    getAutorizacionById,
     getAutorizacionesByPrestador,
     getAutorizacionesByPrestadorAndEstado,
     updateAutorizacion,
@@ -10,8 +11,9 @@ const validarAutorizacion = require('../middleware/validarAutorizacion')
 
 const router = express.Router()
 
-router.get('/:prestadorId', getAutorizacionesByPrestador)
-router.get('/:prestadorId/:estado', getAutorizacionesByPrestadorAndEstado)
+router.get('/:id', getAutorizacionById)
+router.get('/prestador/:prestadorId', getAutorizacionesByPrestador)
+router.get('/prestador/:prestadorId/:estado', getAutorizacionesByPrestadorAndEstado)
 router.patch('/:id', validarSolicitudModificacion, updateAutorizacion)
 router.post('/', validarAutorizacion, createAutorizacion)
 

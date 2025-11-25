@@ -1,5 +1,6 @@
 const express = require('express')
 const { 
+    getReintegroById,
     getReintegrosByPrestador,
     getReintegrosByPrestadorAndEstado,
     updateReintegro,
@@ -10,8 +11,9 @@ const validarReintegro = require('../middleware/validarReintegro')
 
 const router = express.Router()
 
-router.get('/:prestadorId', getReintegrosByPrestador)
-router.get('/:prestadorId/:estado', getReintegrosByPrestadorAndEstado)
+router.get('/:id', getReintegroById)
+router.get('/prestador/:prestadorId', getReintegrosByPrestador)
+router.get('/prestador/:prestadorId/:estado', getReintegrosByPrestadorAndEstado)
 router.patch('/:id', validarSolicitudModificacion, updateReintegro)
 router.post('/', validarReintegro, createReintegro)
 

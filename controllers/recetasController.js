@@ -1,5 +1,18 @@
 const { Receta, Prestador, Sequelize } = require('../database/models')
 
+const getRecetaById = async (req, res) => {
+    try {
+        const id = req.params.id
+        const receta = await Receta.findByPk(id)
+        if(!receta){
+            return res.status(404).json({message: "No se encontro la receta"})
+        }
+        return res.status(200).json(receta)
+    } catch (error) {
+        return res.status(500).json({message: "Error interno del servidor", error: error.message})
+    }
+}
+
 const getRecetasByPrestador = async (req, res) => {
     try {
         const prestadorId = req.params.prestadorId
@@ -74,6 +87,7 @@ const createReceta = async (req,res) => {
 }
 
 module.exports = {
+    getRecetaById,
     getRecetasByPrestador,
     getRecetasByPrestadorAndEstado,
     updateReceta,
