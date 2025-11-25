@@ -13,7 +13,7 @@ const router = express.Router()
 
 router.get('/:id', getReintegroById)
 router.get('/prestador/:prestadorId', getReintegrosByPrestador)
-router.get('/prestador/:prestadorId/:estado', getReintegrosByPrestadorAndEstado)
+router.get('/prestador/:prestadorId/:estados', getReintegrosByPrestadorAndEstado)
 router.patch('/:id', validarSolicitudModificacion, updateReintegro)
 router.post('/', validarReintegro, createReintegro)
 

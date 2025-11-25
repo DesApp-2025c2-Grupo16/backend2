@@ -13,7 +13,7 @@ const router = express.Router()
 
 router.get('/:id', getAutorizacionById)
 router.get('/prestador/:prestadorId', getAutorizacionesByPrestador)
-router.get('/prestador/:prestadorId/:estado', getAutorizacionesByPrestadorAndEstado)
+router.get('/prestador/:prestadorId/:estados', getAutorizacionesByPrestadorAndEstado)
 router.patch('/:id', validarSolicitudModificacion, updateAutorizacion)
 router.post('/', validarAutorizacion, createAutorizacion)
 

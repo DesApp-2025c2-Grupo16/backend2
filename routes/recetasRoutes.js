@@ -13,7 +13,7 @@ const router = express.Router()
 
 router.get('/:id', getRecetaById)
 router.get('/prestador/:prestadorId', getRecetasByPrestador)
-router.get('/prestador/:prestadorId/:estado', getRecetasByPrestadorAndEstado)
+router.get('/prestador/:prestadorId/:estados', getRecetasByPrestadorAndEstado)
 router.patch('/:id', validarSolicitudModificacion, updateReceta)
 router.post('/', validarReceta, createReceta)
 

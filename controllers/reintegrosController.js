@@ -33,12 +33,17 @@ const getReintegrosByPrestador = async (req, res) => {
 const getReintegrosByPrestadorAndEstado = async (req, res) => {
     try {
         const prestadorId = req.params.prestadorId
-        const estado = req.params.estado
+        const estados = req.params.estados.split(',')
         const prestador  = await Prestador.findByPk(prestadorId)
         if(!prestador){
             return res.status(404).json({message: "No se encontro el prestador"})
         }
-        const reintegros = await Reintegro.findAll({where: {PrestadorId: prestadorId, estado: estado}})
+        const reintegros = await Reintegro.findAll({
+            where: {
+                [Sequelize.Op.or]: [ { PrestadorId: prestadorId }, { PrestadorId: null} ],
+                estado: { [Sequelize.Op.in]: estados }
+            }
+        })
         if(reintegros.length === 0){
             return res.status(404).json({message: "No se encontraron reintegros de este prestador con el estado indicado"})
         }
