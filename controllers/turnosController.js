@@ -61,11 +61,14 @@ const getTurnosByPrestadorAndFecha = async (req, res) => {
     const prestadorId = req.params.prestadorId;
     const fecha = req.params.fecha;
 
+    const pagina = parseInt(req.query.pagina)
+    const tamaño = parseInt(req.query.tamaño)
+
     const minFecha = new Date(fecha);
     const maxFecha = new Date(fecha);
     maxFecha.setDate(maxFecha.getDate() + 1);
 
-    const turnos = await Turno.findAll({
+    const options = {
       where: {
         PrestadorId: prestadorId,
         fecha: {
@@ -79,17 +82,24 @@ const getTurnosByPrestadorAndFecha = async (req, res) => {
           attributes: ['nombre', 'apellido'],
         },
       ],
-      order: [['fecha', 'ASC']],
-    });
+      order: [['fecha', 'ASC']]
+    }
 
-    const payload = turnos.map(t => {
+    if (!isNaN(pagina) && !isNaN(tamaño)) {
+      options.limit = tamaño;
+      options.offset = (pagina - 1) * tamaño;
+    }
+
+    const {rows, count} = await Turno.findAndCountAll(options);
+    
+    const turnos = rows.map(t => {
       const item = t.toJSON();
       item.afiliado = item.Afiliado || null;
       delete item.Afiliado;
       return item;
     });
 
-    return res.status(200).json(payload);
+    return res.status(200).json({turnos, count});
   } catch (error) {
     return res.status(500).json({ message: "Error interno del servidor", error: error.message });
   }
