@@ -34,20 +34,49 @@ const getReintegrosByPrestadorAndEstado = async (req, res) => {
     try {
         const prestadorId = req.params.prestadorId
         const estados = req.params.estados.split(',')
+
+        const pagina = parseInt(req.query.pagina)
+        const tamaño = parseInt(req.query.tamaño)
+
         const prestador  = await Prestador.findByPk(prestadorId)
         if(!prestador){
             return res.status(404).json({message: "No se encontro el prestador"})
         }
-        const reintegros = await Reintegro.findAll({
+
+        const options  = {
             where: {
                 [Sequelize.Op.or]: [ { PrestadorId: prestadorId }, { PrestadorId: null} ],
                 estado: { [Sequelize.Op.in]: estados }
-            }
-        })
+            },
+            limit: tamaño, 
+            offset: (pagina - 1) * tamaño
+        }
+
+        const busqueda = req.query.busqueda
+        if(busqueda && busqueda.trim() !== ""){
+            options.where[Sequelize.Op.and]= [
+                {
+                    [Sequelize.Op.or]: [
+                        Sequelize.where(Sequelize.col("Afiliado.nombre"), {
+                            [Sequelize.Op.like]: `%${busqueda}%`
+                        }),
+                        Sequelize.where(Sequelize.col("Afiliado.apellido"), {
+                            [Sequelize.Op.like]: `%${busqueda}%`
+                        }),
+                        { asunto: { [Sequelize.Op.like]: `%${busqueda}%` } }
+                    ]
+                }
+            ];
+        }
+
+        const {rows, count} = await Reintegro.findAndCountAll(options)
+
+        const reintegros = rows
         if(reintegros.length === 0){
             return res.status(404).json({message: "No se encontraron reintegros de este prestador con el estado indicado"})
         }
-        return res.status(200).json(reintegros)
+
+        return res.status(200).json({reintegros, count})
     } catch (error) {
         return res.status(500).json({message: "Error interno del servidor", error: error.message})
     }
