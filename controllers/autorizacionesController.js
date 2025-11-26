@@ -34,6 +34,9 @@ const getAutorizacionesByPrestadorAndEstado = async (req, res) => {
     try {
         const prestadorId = req.params.prestadorId
         const estados = req.params.estados.split(',')
+
+        const {pagina, tamaño} = req.query
+        
         const prestador  = await Prestador.findByPk(prestadorId)
         if(!prestador){
             return res.status(404).json({message: "No se encontro el prestador"})
@@ -42,7 +45,9 @@ const getAutorizacionesByPrestadorAndEstado = async (req, res) => {
             where: {
                 [Sequelize.Op.or]: [ { PrestadorId: prestadorId }, { PrestadorId: null} ],
                 estado: { [Sequelize.Op.in]: estados }
-            }
+            },
+            limit: tamaño,
+            offset: (pagina - 1) * tamaño 
         })
         if(autorizaciones.length === 0){
             return res.status(404).json({message: "No se encontraron autorizaciones de este prestador con el estado indicado"})
