@@ -35,13 +35,14 @@ const getAutorizacionesByPrestadorAndEstado = async (req, res) => {
         const prestadorId = req.params.prestadorId
         const estados = req.params.estados.split(',')
 
-        const {pagina, tamaño} = req.query
-        
+        const pagina = parseInt(req.query.pagina)
+        const tamaño = parseInt(req.query.tamaño)
+
         const prestador  = await Prestador.findByPk(prestadorId)
         if(!prestador){
             return res.status(404).json({message: "No se encontro el prestador"})
         }
-        const autorizaciones = await Autorizacion.findAll({
+        const {rows, count} = await Autorizacion.findAndCountAll({
             where: {
                 [Sequelize.Op.or]: [ { PrestadorId: prestadorId }, { PrestadorId: null} ],
                 estado: { [Sequelize.Op.in]: estados }
@@ -49,10 +50,11 @@ const getAutorizacionesByPrestadorAndEstado = async (req, res) => {
             limit: tamaño,
             offset: (pagina - 1) * tamaño 
         })
+        const autorizaciones = rows
         if(autorizaciones.length === 0){
             return res.status(404).json({message: "No se encontraron autorizaciones de este prestador con el estado indicado"})
         }
-        return res.status(200).json(autorizaciones)
+        return res.status(200).json({autorizaciones, count})
     } catch (error) {
         return res.status(500).json({message: "Error interno del servidor", error: error.message})
     }

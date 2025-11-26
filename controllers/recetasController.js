@@ -35,14 +35,15 @@ const getRecetasByPrestadorAndEstado = async (req, res) => {
         const prestadorId = req.params.prestadorId
         const estados = req.params.estados.split(',')
 
-        const {pagina, tamaño} = req.query
+        const pagina = parseInt(req.query.pagina)
+        const tamaño = parseInt(req.query.tamaño)
 
         const prestador  = await Prestador.findByPk(prestadorId)
         if(!prestador){
             return res.status(404).json({message: "No se encontro el prestador"})
         }
 
-        const recetas = await Receta.findAll({
+        const {rows, count} = await Receta.findAndCountAll({
             where: {
                 [Sequelize.Op.or]: [ { PrestadorId: prestadorId }, { PrestadorId: null} ],
                 estado: { [Sequelize.Op.in]: estados }
@@ -51,11 +52,12 @@ const getRecetasByPrestadorAndEstado = async (req, res) => {
             offset: (pagina - 1) * tamaño 
         })
 
+        const recetas = rows
         if(recetas.length === 0){
             return res.status(404).json({message: "No se encontraron recetas de este prestador con el estado indicado"})
         }
-        
-        return res.status(200).json(recetas)
+
+        return res.status(200).json({recetas, count})
     } catch (error) {
         return res.status(500).json({message: "Error interno del servidor", error: error.message})
     }
