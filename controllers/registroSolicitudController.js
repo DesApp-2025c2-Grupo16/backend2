@@ -9,7 +9,7 @@ const getRegistrosByPrestadorAndDate = async (req, res) => {
         }
         const minFecha = new Date(req.query.minFecha)
         const maxFecha = new Date(req.query.maxFecha)
-        minFecha.setDate(minFecha.getDate()-1)
+        maxFecha.setDate(maxFecha.getDate()+1)
         const registros = await RegistroSolicitud.findAll({
             where: {
                 PrestadorId: prestadorId,
