@@ -43,16 +43,35 @@ const getReintegrosByPrestadorAndEstado = async (req, res) => {
             return res.status(404).json({message: "No se encontro el prestador"})
         }
 
-        const {rows, count} = await Reintegro.findAndCountAll({
+        const options  = {
             where: {
                 [Sequelize.Op.or]: [ { PrestadorId: prestadorId }, { PrestadorId: null} ],
                 estado: { [Sequelize.Op.in]: estados }
             },
             limit: tamaño, 
             offset: (pagina - 1) * tamaño
-       })
+        }
 
-       const reintegros = rows
+        const busqueda = req.query.busqueda
+        if(busqueda && busqueda.trim() !== ""){
+            options.where[Sequelize.Op.and]= [
+                {
+                    [Sequelize.Op.or]: [
+                        Sequelize.where(Sequelize.col("Afiliado.nombre"), {
+                            [Sequelize.Op.like]: `%${busqueda}%`
+                        }),
+                        Sequelize.where(Sequelize.col("Afiliado.apellido"), {
+                            [Sequelize.Op.like]: `%${busqueda}%`
+                        }),
+                        { asunto: { [Sequelize.Op.like]: `%${busqueda}%` } }
+                    ]
+                }
+            ];
+        }
+
+        const {rows, count} = await Reintegro.findAndCountAll(options)
+
+        const reintegros = rows
         if(reintegros.length === 0){
             return res.status(404).json({message: "No se encontraron reintegros de este prestador con el estado indicado"})
         }

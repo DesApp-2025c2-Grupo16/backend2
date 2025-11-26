@@ -42,14 +42,34 @@ const getAutorizacionesByPrestadorAndEstado = async (req, res) => {
         if(!prestador){
             return res.status(404).json({message: "No se encontro el prestador"})
         }
-        const {rows, count} = await Autorizacion.findAndCountAll({
+
+        const options  = {
             where: {
                 [Sequelize.Op.or]: [ { PrestadorId: prestadorId }, { PrestadorId: null} ],
                 estado: { [Sequelize.Op.in]: estados }
             },
-            limit: tamaño,
-            offset: (pagina - 1) * tamaño 
-        })
+            limit: tamaño, 
+            offset: (pagina - 1) * tamaño
+        }
+
+        const busqueda = req.query.busqueda
+        if(busqueda && busqueda.trim() !== ""){
+            options.where[Sequelize.Op.and]= [
+                {
+                    [Sequelize.Op.or]: [
+                        Sequelize.where(Sequelize.col("Afiliado.nombre"), {
+                            [Sequelize.Op.like]: `%${busqueda}%`
+                        }),
+                        Sequelize.where(Sequelize.col("Afiliado.apellido"), {
+                            [Sequelize.Op.like]: `%${busqueda}%`
+                        }),
+                        { asunto: { [Sequelize.Op.like]: `%${busqueda}%` } }
+                    ]
+                }
+            ];
+        }
+
+        const {rows, count} = await Autorizacion.findAndCountAll(options)
         const autorizaciones = rows
         if(autorizaciones.length === 0){
             return res.status(404).json({message: "No se encontraron autorizaciones de este prestador con el estado indicado"})
