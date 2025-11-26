@@ -6,7 +6,8 @@ const schemaSolicitudModificacion = Joi.object({
         is: Joi.string().valid('Observado', 'Rechazado'),
         then: Joi.string().min(3).max(500).required(),
         otherwise: Joi.valid(null)
-    }) 
+    }),
+    PrestadorId: Joi.number()
 })
 
 module.exports = schemaSolicitudModificacion

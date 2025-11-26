@@ -60,9 +60,10 @@ const updateReintegro = async (req, res) => {
         if(!reintegro){
             return res.status(404).json({message: "No se encontro el reintegro"})
         }
-        const {estado, motivoEstado} = req.body
+        const {estado, motivoEstado, PrestadorId} = req.body
         reintegro.estado = estado
         reintegro.motivoEstado = motivoEstado
+        reintegro.prestadorId = PrestadorId
         await reintegro.save()
         return res.status(200).json(reintegro)
     } catch (error) {
