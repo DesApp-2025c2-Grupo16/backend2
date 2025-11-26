@@ -1,13 +1,22 @@
-const { Nota, Turno, Sequelize } = require("../database/models")
+const { Nota, Turno, Prestador, Sequelize } = require("../database/models")
 
 const getNotasByAfiliado = async (req, res) => {
   try {
     const afiliadoId = req.params.afiliadoId
-    const notas = await Nota.findAll({where: {AfiliadoId: afiliadoId}})
+
+    const pagina = parseInt(req.query.pagina)
+    const tamaño = parseInt(req.query.tamaño)
+
+    const {rows, count} = await Nota.findAndCountAll({
+      where: {AfiliadoId: afiliadoId},
+      limit: tamaño,
+      offset: (pagina - 1) * tamaño 
+    })
+    const notas = rows
     if(!notas){
       return res.status(404).json({message: "No se encontraron notas del afiliado"})
     }
-    return res.status(200).json(notas)
+    return res.status(200).json({notas, count})
   } catch (error) {
     return res.status(500).json({message: "Error interno del servidor", error: error.message})
   }
@@ -16,12 +25,21 @@ const getNotasByAfiliado = async (req, res) => {
 const getNotasByAfiliadoAndPrestador = async (req, res) => {
   try {
     const afiliadoId = req.params.afiliadoId
-    const prestadorId = req.params.prestadorId
-    const notas = await Nota.findAll({where: {AfiliadoId: afiliadoId, PrestadorId: prestadorId}})
+    const nombrePrestador = req.params.prestador
+
+    const pagina = parseInt(req.query.pagina)
+    const tamaño = parseInt(req.query.tamaño)
+
+    const {rows, count} = await Nota.findAndCountAll({
+      where: {AfiliadoId: afiliadoId, doctor: {[Sequelize.Op.like]: "%" + nombrePrestador + "%"}},
+      limit: tamaño,
+      offset: (pagina - 1) * tamaño 
+    })
+    const notas = rows
     if(!notas){
       return res.status(404).json({message: "No se encontraron notas del afiliado con el prestador"})
     }
-    return res.status(200).json(notas)
+    return res.status(200).json({notas, count})
   } catch (error) {
     return res.status(500).json({message: "Error interno del servidor", error: error.message})
   }
