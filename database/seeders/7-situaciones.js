@@ -96,7 +96,43 @@ module.exports = {
         fechaFin: new Date(2025, 8, 30),
         descripcion: "Lesión en menisco",
         AfiliadoId: 5
+      },
+      {
+        id: 13,
+        fechaInicio: new Date(2025, 3, 10),
+        fechaFin: new Date(2025, 3, 25),
+        descripcion: "Infección urinaria",
+        AfiliadoId: 1
+      },
+      {
+        id: 14,
+        fechaInicio: new Date(2025, 5, 18),
+        fechaFin: new Date(2025, 6, 2),
+        descripcion: "Contractura cervical",
+        AfiliadoId: 1
+      },
+      {
+        id: 15,
+        fechaInicio: new Date(2025, 1, 7),
+        fechaFin: new Date(2025, 1, 22),
+        descripcion: "Otitis media aguda",
+        AfiliadoId: 1
+      },
+      {
+        id: 16,
+        fechaInicio: new Date(2025, 10, 1),
+        fechaFin: new Date(2025, 10, 15),
+        descripcion: "Alergia estacional",
+        AfiliadoId: 1
+      },
+      {
+        id: 17,
+        fechaInicio: new Date(2025, 4, 12),
+        fechaFin: new Date(2025, 5, 5),
+        descripcion: "Dermatitis de contacto",
+        AfiliadoId: 1
       }
+
     ], {});
   },
 

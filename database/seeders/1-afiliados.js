@@ -53,6 +53,62 @@ module.exports = {
           apellido: "Rodriguez",
           parentesco: "hijo/a"
         },
+          {
+          id: 6,
+          numeroGrupoFamiliar: 1003,
+          numeroIntegrante: 1,
+          nombre: "Roberto",
+          apellido: "Gomez",
+          parentesco: "titular"
+        },
+        {
+          id: 7,
+          numeroGrupoFamiliar: 1003,
+          numeroIntegrante: 2,
+          nombre: "Laura",
+          apellido: "Gomez",
+          parentesco: "conyuge"
+        },
+        {
+          id: 8,
+          numeroGrupoFamiliar: 1003,
+          numeroIntegrante: 3,
+          nombre: "Martina",
+          apellido: "Gomez",
+          parentesco: "hijo/a"
+        },
+        {
+          id: 9,
+          numeroGrupoFamiliar: 1004,
+          numeroIntegrante: 1,
+          nombre: "Diego",
+          apellido: "Fernandez",
+          parentesco: "titular"
+        },
+        {
+          id: 10,
+          numeroGrupoFamiliar: 1004,
+          numeroIntegrante: 2,
+          nombre: "Lucia",
+          apellido: "Fernandez",
+          parentesco: "hijo/a"
+        },
+        {
+          id: 11,
+          numeroGrupoFamiliar: 1005,
+          numeroIntegrante: 1,
+          nombre: "Esteban",
+          apellido: "Lopez",
+          parentesco: "titular"
+        },
+        {
+          id: 12,
+          numeroGrupoFamiliar: 1005,
+          numeroIntegrante: 2,
+          nombre: "Brenda",
+          apellido: "Lopez",
+          parentesco: "hijo/a"
+        }
       ], {});
   },
 
