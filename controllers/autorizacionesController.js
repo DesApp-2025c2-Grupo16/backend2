@@ -87,9 +87,10 @@ const updateAutorizacion = async (req, res) => {
         if(!autorizacion){
             return res.status(404).json({message: "No se encontro la autorizacion"})
         }
-        const {estado, motivoEstado} = req.body
+        const {estado, motivoEstado, PrestadorId} = req.body
         autorizacion.estado = estado
         autorizacion.motivoEstado = motivoEstado
+        autorizacion.PrestadorId = PrestadorId
         await autorizacion.save()
         return res.status(200).json(autorizacion)
     } catch (error) {

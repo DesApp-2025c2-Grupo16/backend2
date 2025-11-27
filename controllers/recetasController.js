@@ -91,11 +91,11 @@ const updateReceta = async (req, res) => {
             return res.status(404).json({ message: "No se encontró la receta" });
         }
 
-        const { estado, motivoEstado } = req.body;
+        const { estado, motivoEstado, PrestadorId} = req.body;
 
-        if (estado) receta.estado = estado;
-        if (motivoEstado !== undefined) receta.motivoEstado = motivoEstado;
-
+        receta.estado = estado;
+        receta.motivoEstado = motivoEstado;
+        receta.PrestadorId = PrestadorId
         await receta.save();
 
         return res.status(200).json(receta);

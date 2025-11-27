@@ -92,7 +92,7 @@ const updateReintegro = async (req, res) => {
         const {estado, motivoEstado, PrestadorId} = req.body
         reintegro.estado = estado
         reintegro.motivoEstado = motivoEstado
-        reintegro.prestadorId = PrestadorId
+        reintegro.PrestadorId = PrestadorId
         await reintegro.save()
         return res.status(200).json(reintegro)
     } catch (error) {
