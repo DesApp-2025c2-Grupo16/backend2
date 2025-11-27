@@ -7,11 +7,31 @@ const getSituacionesByAfiliado = async (req, res) => {
     const pagina = parseInt(req.query.pagina)
     const tamaño = parseInt(req.query.tamaño)
 
-    const {rows, count} = await Situacion.findAndCountAll({
+    const options = {
       where: {AfiliadoId: afiliadoId},
       limit: tamaño,
-      offset: (pagina - 1) * tamaño 
-    })
+      offset: (pagina - 1) * tamaño, 
+      order: [["fechaInicio", 'DESC']]
+    }
+
+    const busqueda = req.query.busqueda;
+    if (busqueda && busqueda.trim() !== "") {
+      options.where[Sequelize.Op.and] = [
+        ...(options.where[Sequelize.Op.and] || []),
+        { descripcion: { [Sequelize.Op.like]: `%${busqueda}%` } }
+      ];
+    }
+
+    const soloActivas = req.query.soloActivas;
+    if (soloActivas && soloActivas === "true") {
+      const hoy = new Date();
+      options.where[Sequelize.Op.and] = [
+      ...(options.where[Sequelize.Op.and] || []),
+      { fechaFin: { [Sequelize.Op.gt]: hoy } }
+      ];
+    }
+
+    const {rows, count} = await Situacion.findAndCountAll(options)
     const situaciones = rows
     if(situaciones.length === 0){
       return res.status(404).json({message: "No se encontraron situaciones del afiliado"})
