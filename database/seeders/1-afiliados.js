@@ -19,7 +19,7 @@ module.exports = {
           numeroIntegrante: 1,
           nombre: "Juan",
           apellido: "Perez",
-          parentesco: "titular"
+          parentesco: "Titular"
         },
         {
           id: 2,
@@ -27,7 +27,7 @@ module.exports = {
           numeroIntegrante: 2,
           nombre: "Carla",
           apellido: "Perez",
-          parentesco: "conyuge"
+          parentesco: "Conyuge"
         },
         {
           id: 3,
@@ -35,7 +35,7 @@ module.exports = {
           numeroIntegrante: 3,
           nombre: "Andrea",
           apellido: "Perez",
-          parentesco: "hijo/a"
+          parentesco: "Hijo/a"
         },
         {
           id: 4,
@@ -43,7 +43,7 @@ module.exports = {
           numeroIntegrante: 1,
           nombre: "Silvia",
           apellido: "Rodriguez",
-          parentesco: "titular"
+          parentesco: "Titular"
         },
         {
           id: 5,
@@ -51,7 +51,7 @@ module.exports = {
           numeroIntegrante: 2,
           nombre: "Pedro",
           apellido: "Rodriguez",
-          parentesco: "hijo/a"
+          parentesco: "Hijo/a"
         },
           {
           id: 6,
@@ -59,7 +59,7 @@ module.exports = {
           numeroIntegrante: 1,
           nombre: "Roberto",
           apellido: "Gomez",
-          parentesco: "titular"
+          parentesco: "Titular"
         },
         {
           id: 7,
@@ -67,7 +67,7 @@ module.exports = {
           numeroIntegrante: 2,
           nombre: "Laura",
           apellido: "Gomez",
-          parentesco: "conyuge"
+          parentesco: "Conyuge"
         },
         {
           id: 8,
@@ -75,7 +75,7 @@ module.exports = {
           numeroIntegrante: 3,
           nombre: "Martina",
           apellido: "Gomez",
-          parentesco: "hijo/a"
+          parentesco: "Hijo/a"
         },
         {
           id: 9,
@@ -83,7 +83,7 @@ module.exports = {
           numeroIntegrante: 1,
           nombre: "Diego",
           apellido: "Fernandez",
-          parentesco: "titular"
+          parentesco: "Titular"
         },
         {
           id: 10,
@@ -91,7 +91,7 @@ module.exports = {
           numeroIntegrante: 2,
           nombre: "Lucia",
           apellido: "Fernandez",
-          parentesco: "hijo/a"
+          parentesco: "Hijo/a"
         },
         {
           id: 11,
@@ -99,7 +99,7 @@ module.exports = {
           numeroIntegrante: 1,
           nombre: "Esteban",
           apellido: "Lopez",
-          parentesco: "titular"
+          parentesco: "Titular"
         },
         {
           id: 12,
@@ -107,7 +107,7 @@ module.exports = {
           numeroIntegrante: 2,
           nombre: "Brenda",
           apellido: "Lopez",
-          parentesco: "hijo/a"
+          parentesco: "Hijo/a"
         }
       ], {});
   },
