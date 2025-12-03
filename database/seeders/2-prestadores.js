@@ -39,6 +39,20 @@ module.exports = {
         "esCentro": false,
         "contraseña": "$2b$10$VfjYPsYaWJ8K0ezqJ1BvVOSvHwz3KX5uZOVYvTrUpyoal3spBsP/.",
         "centroId": 1
+      },
+      {
+        "id": 5,
+        "nombre": "Paulo Almada",
+        "esCentro": false,
+        "contraseña": "$2b$10$X1FXuzfxjdpC6rOyjQbNwO7hQYJ31RmQvru26h1NzC26LJlca46QS",
+        "centroId": null
+      },
+      {
+        "id": 6,
+        "nombre": "Fernando Saralegui",
+        "esCentro": false,
+        "contraseña": "$2b$10$EfPh0VDRuTxJmcYDvn633OIwHPpAmMnELtoWxkwx/RoqdA.AeC4M.",
+        "centroId": null
       }
     ], {});
   },
