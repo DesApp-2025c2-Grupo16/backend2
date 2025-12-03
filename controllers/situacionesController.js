@@ -26,8 +26,13 @@ const getSituacionesByAfiliado = async (req, res) => {
     if (soloActivas && soloActivas === "true") {
       const hoy = new Date();
       options.where[Sequelize.Op.and] = [
-      ...(options.where[Sequelize.Op.and] || []),
-      { fechaFin: { [Sequelize.Op.gt]: hoy } }
+        ...(options.where[Sequelize.Op.and] || []),
+        { 
+          [Sequelize.Op.or]: [
+            { fechaFin: null },
+            { fechaFin: { [Sequelize.Op.gt]: hoy } }
+          ] 
+        }
       ];
     }
 
