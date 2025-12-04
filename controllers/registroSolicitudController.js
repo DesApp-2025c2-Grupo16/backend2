@@ -12,7 +12,10 @@ const getRegistrosByPrestadorAndDate = async (req, res) => {
         maxFecha.setDate(maxFecha.getDate()+1)
         const registros = await RegistroSolicitud.findAll({
             where: {
-                PrestadorId: prestadorId,
+                [Sequelize.Op.or]: [
+                    { PrestadorId: prestadorId },
+                    { PrestadorId: null }
+                ],
                 fecha: {
                     [Sequelize.Op.gte]: minFecha,
                     [Sequelize.Op.lt]: maxFecha,

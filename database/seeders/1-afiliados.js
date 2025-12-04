@@ -58,7 +58,7 @@ module.exports = {
           numeroGrupoFamiliar: 1003,
           numeroIntegrante: 1,
           nombre: "Roberto",
-          apellido: "Gomez",
+          apellido: "Garcia",
           parentesco: "Titular"
         },
         {
@@ -66,7 +66,7 @@ module.exports = {
           numeroGrupoFamiliar: 1003,
           numeroIntegrante: 2,
           nombre: "Laura",
-          apellido: "Gomez",
+          apellido: "Garcia",
           parentesco: "Conyuge"
         },
         {
@@ -74,7 +74,7 @@ module.exports = {
           numeroGrupoFamiliar: 1003,
           numeroIntegrante: 3,
           nombre: "Martina",
-          apellido: "Gomez",
+          apellido: "Garcia",
           parentesco: "Hijo/a"
         },
         {
