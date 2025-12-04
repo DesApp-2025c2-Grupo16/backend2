@@ -1357,6 +1357,71 @@ module.exports = {
         AfiliadoId: 5,
         PrestadorId: 4
       },
+      //--- 6 enero ---
+      {
+        id: 149,
+        fecha: new Date(2026, 0, 6, 10 - 3, 30),
+        descripcion: "Pediatría",
+        especialidad: "Pediatría",
+        estado: "Pendiente",
+        AfiliadoId: 2,
+        PrestadorId: 3
+      },
+      {
+        id: 150,
+        fecha: new Date(2026, 0, 6, 11 - 3, 0),
+        descripcion: "Consulta oftalmológica",
+        especialidad: "Oftalmología",
+        estado: "Pendiente",
+        AfiliadoId: 3,
+        PrestadorId: 3
+      },
+      {
+        id: 151,
+        fecha: new Date(2026, 0, 6, 11 - 3, 30),
+        descripcion: "Psiquiatría",
+        especialidad: "Psiquiatría",
+        estado: "Pendiente",
+        AfiliadoId: 4,
+        PrestadorId: 3
+      },
+      // --- 8 de enero ---
+      {
+        id: 152,
+        fecha: new Date(2026, 0, 8, 9 - 3, 0),
+        descripcion: "Estudio cardiológico",
+        especialidad: "Cardiología",
+        estado: "Pendiente",
+        AfiliadoId: 11,
+        PrestadorId: 3
+      },
+      {
+        id: 153,
+        fecha: new Date(2026, 0, 8, 9 - 3, 30),
+        descripcion: "Consulta psiquiátrica",
+        especialidad: "Psiquiatría",
+        estado: "Pendiente",
+        AfiliadoId: 12,
+        PrestadorId: 3
+      },
+      {
+        id: 154,
+        fecha: new Date(2026, 0, 8, 10 - 3, 0),
+        descripcion: "Control oftalmológico",
+        especialidad: "Oftalmología",
+        estado: "Pendiente",
+        AfiliadoId: 1,
+        PrestadorId: 3
+      },
+      {
+        id: 155,
+        fecha: new Date(2026, 0, 8, 10 - 3, 30),
+        descripcion: "Dermatología",
+        especialidad: "Dermatología",
+        estado: "Pendiente",
+        AfiliadoId: 2,
+        PrestadorId: 3
+      },
 
 
     ], {});
